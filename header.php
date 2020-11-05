@@ -7,13 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-<header class="fixed-top">
+<header >
 
-    <div class="promo">
-        <p>mega promo</p>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light ">
-  <a class="navbar-brand" href="#"><img src="../images/logo.png" alt=""></a>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <a class="navbar-brand" href="#"><img src="ressources/images/logo.png" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,7 +18,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link text-white" href="#">Boutique</a>
+        <a class="nav-link text-white" href="boutique.php">Boutique</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"></a>
@@ -31,14 +28,11 @@
         Découvrir
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-white" href="#">Action</a>
-          <a class="dropdown-item text-white" href="#">Another action</a>
-          <div class="dropdown-divider text-white"></div>
-          <a class="dropdown-item text-white" href="#">Something else here</a>
-        </div>
+          <a class="dropdown-item text-white" href="#">Notre histoire</a>
+          <a class="dropdown-item text-white" href="#">Blog</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled text-white" href="#">Disabled</a>
+        <a class="nav-link disabled text-white" href="#">Nous trouver</a>
       </li>
     </ul>
   </div>

@@ -1,0 +1,15 @@
+nav {
+    background-color: rgba(25, 15, 8, 0.8);
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.dropdown-menu {
+    background-color:  rgba(25, 15, 8, 0.8);
+}
+
+.nav-item {
+    margin-right: 10px;
+}

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../functions/functions.php');
+include('functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,13 +17,13 @@ include('../functions/functions.php');
             <!--JQUERY-->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <!--LINK CSS-->
-            <link rel="stylesheet" href="../header/css/styles-header.css">
+            <link rel="stylesheet" href="ressources/css/styles-header.css">
+            <link rel="stylesheet" href="ressources/css/styles-accueil.css">
         <title>Document</title>
     </head>
     <body>
  
-         <?php include("../header/header.php")?>
-
+         <?php include("header.php")?>
 
 
 
