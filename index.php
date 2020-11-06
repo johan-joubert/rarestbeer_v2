@@ -1,6 +1,24 @@
 <?php
 session_start();
 include('functions.php');
+
+//vérifier si panier existe
+if (!isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array ();
+}
+
+$listeArticles = getArticles();
+
+if (isset($_POST['IdChooseArticle'])) {
+    $id = $_POST['IdChooseArticle'];
+    $chooseArticle = getArticleFromId($listeArticles, $id);
+    ajoutAuPanier($chooseArticle, $id);
+}
+
+
+//ajout au panier
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +37,8 @@ include('functions.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--LINK CSS-->
     <link rel="stylesheet" href="ressources/css/styles-header.css">
-    <link rel="stylesheet" href="ressources/css/styles-accueil.css">
+    <link rel="stylesheet" href="ressources/css/styles-index.css">
+    <link rel="stylesheet" href="ressources/css/styles-functions.css">
     <title>Document</title>
 </head>
 
@@ -34,9 +53,18 @@ include('functions.php');
 
     <main>
 
-        <?php
-        $listeArticles = getArticles();
-        ?>
+            <div class="container">
+                <div class="row"> 
+
+                    <?php
+                    $listeArticles = getArticles();
+
+                    showArticles($listeArticles);
+                    ?>
+
+                </div>
+            </div>
+
 
     </main>
 

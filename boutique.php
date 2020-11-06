@@ -18,7 +18,7 @@ include('functions.php');
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <!--LINK CSS-->
             <link rel="stylesheet" href="ressources/css/styles-header.css">
-            <link rel="stylesheet" href="ressources/css/styles-accueil.css">
+            <link rel="stylesheet" href="ressources/css/styles-index.css">
         <title>Document</title>
     </head>
     <body>
