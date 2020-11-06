@@ -15,10 +15,6 @@ if (isset($_POST['IdChooseArticle'])) {
     ajoutAuPanier($chooseArticle, $id);
 }
 
-
-//ajout au panier
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -6,6 +6,9 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array ();
 }
 
+if (isset($_POST['idQteArticle'])) {
+    modifierQtePanier ();
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ if (!isset($_SESSION['panier'])) {
 
     <body>
 
-    <?php include("header.php") ?>
+    <!-- <?php include("header.php") ?> -->
 
 
 

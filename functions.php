@@ -14,21 +14,6 @@
 
 <?php
 
-/*
-function getArticles() {}
-renvoie un tableau contenant les articles
-chaque article est un tableau contenant les infos de l'article
-(dans functions.php)
-l'appeler dans index.php
-$listeArticles = getArticles();
-var_dump($listeArticles);
-function showArticles($listeArticles){}
-foreach qui va parcourir $listeArticles
-et afficher du html (echo)pour les afficher un par un
-$listeArticles = getArticles();
-showArticles($listeArticles);
-showArticles();
-*/
 
 //==========CREATION ARTICLE==========
 
@@ -38,10 +23,10 @@ function getArticles() {
     return $listes = [
         "article 1" => ["id" => 1, "picture" => "beer.jpg", "libelle" => "westvleteren", "qte" => 1, "prixProduit" => 12],
         "article 2" => ["id" => 2, "picture" => "beer.jpg", "libelle" => "jojobeer", "qte" => 1, "prixProduit" => 22],
-        "article 3" => ["id" => 3, "picture" => "beer.jpg", "libelle" => "jojobeer", "qte" => 1, "prixProduit" => 22],
-        "article 4" => ["id" => 4, "picture" => "beer.jpg", "libelle" => "jojobeer", "qte" => 1, "prixProduit" => 22],
-        "article 5" => ["id" => 5, "picture" => "beer.jpg", "libelle" => "jojobeer", "qte" => 1, "prixProduit" => 22],
-        "article 6" => ["id" => 6, "picture" => "beer.jpg", "libelle" => "jojobeer", "qte" => 1, "prixProduit" => 22]
+        "article 3" => ["id" => 3, "picture" => "beer.jpg", "libelle" => "megajobeer", "qte" => 1, "prixProduit" => 22],
+        "article 4" => ["id" => 4, "picture" => "beer.jpg", "libelle" => "Superbeer", "qte" => 1, "prixProduit" => 22],
+        "article 5" => ["id" => 5, "picture" => "beer.jpg", "libelle" => "Ultrabeer", "qte" => 1, "prixProduit" => 22],
+        "article 6" => ["id" => 6, "picture" => "beer.jpg", "libelle" => "Gigajobeer", "qte" => 1, "prixProduit" => 22]
     ];
 }
 
@@ -126,8 +111,6 @@ function showPanier($monPanier) {
         echo "<div class=\"col-md-2\">";
         echo "<input type=\"number\" name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">";
         echo "<input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">";
-        echo "</div>";
-        echo "<div class=\"col-md-2\">";
         echo "<input type=\"submit\" name=\"modifier\" value=\"modifier\">";
         echo "</div>";
         echo "</form>";
@@ -135,3 +118,14 @@ function showPanier($monPanier) {
     }
 }
 
+
+// modifier quantier panier
+
+function modifierQtePanier () {
+
+    for ($i = 0; $i < count($_SESSION['panier']); $i++) {
+        if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
+            $_SESSION['panier'][$i]['qte'] = $_POST['qteArticle'];
+        }
+    }
+}
