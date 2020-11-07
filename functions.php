@@ -109,10 +109,14 @@ function showPanier($monPanier) {
         echo "</div>";
         echo "<form action=\"panier.php\" method=\"post\">";
         echo "<div class=\"col-md-2\">";
-        echo "<input type=\"number\" name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">";
+        echo "<input type=\"number\"  max=15 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">";
         echo "<input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">";
         echo "<input type=\"submit\" name=\"modifier\" value=\"modifier\">";
         echo "</div>";
+        echo "</form>";
+        echo "<form method=\"post\" action=\"panier.php\">";
+        echo "<input type=\"submit\" name=\"delete\" value=\"supprimer\">";
+        echo "<input type=\"hidden\" name=\"deleteArticle\" value=\"" .$article['id']."\">";
         echo "</form>";
         echo "</div>";
     }
@@ -129,3 +133,20 @@ function modifierQtePanier () {
         }
     }
 }
+
+
+// supprimer panier
+
+function supprimerArticle($ref) {
+    foreach ($_SESSION['panier'] as $article) {
+        if ($article['id'] == $ref) {
+            $ref = $_POST['deleteArticle'];
+            $array = $_SESSION['panier'];
+            $key = array_search($article, $array);
+            array_splice($_SESSION['panier'], $key);    
+        }
+    }
+}
+
+
+// vider tout le panier 

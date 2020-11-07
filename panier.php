@@ -10,6 +10,16 @@ if (isset($_POST['idQteArticle'])) {
     modifierQtePanier ();
 }
 
+
+if(isset($_POST['deleteArticle'])) {
+    supprimerArticle($_POST['deleteArticle']);
+}
+
+if (isset($_POST['unsetSession'])){
+    session_unset();
+}
+
+// var_dump( $_SESSION['panier']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +46,7 @@ if (isset($_POST['idQteArticle'])) {
 
     <body>
 
-    <!-- <?php include("header.php") ?> -->
+    <?php// include("header.php") ?>
 
 
 
@@ -55,9 +65,16 @@ if (isset($_POST['idQteArticle'])) {
                     } else {
                         $monPanier = $_SESSION['panier'];
                         showPanier($monPanier);
+                        echo "<form method=\"post\" action=\"panier.php\">";
+                        echo "<input type=\"submit\" name=\"unsetSession\">";
+                        echo "</form>";    
                     }
+
+                    
                 ?>
             </div>
+
+
 
 
     </main>
