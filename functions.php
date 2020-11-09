@@ -167,3 +167,37 @@ function montant_panier() {
     
     return $total;
 }
+
+// calcul frais de port (fdp)
+
+function fdp() {
+    $fdp = 0;
+    foreach($_SESSION['panier'] as $article) {
+        $fdp += $article['qte'] * 1;
+    }
+
+    return $fdp;
+}
+
+// calcul TVA
+
+function tva() {
+    $tva = 0;
+    foreach($_SESSION['panier'] as $article) {
+        $tva += (($article['prixProduit'] * $article['qte']) + 1) * (20/100);
+    }
+
+    return $tva;
+}
+
+
+// calcul montant commande
+
+function montantCommande() {
+    $fdp = 0;
+    foreach($_SESSION['panier'] as $article) {
+        $fdp += ($article['prixProduit'] * $article['qte']) + 1;
+    }
+
+    return $fdp;
+}

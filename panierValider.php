@@ -6,26 +6,7 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array ();
 }
 
-if (isset($_POST['idQteArticle'])) {
-    modifierQtePanier ();
-}
 
-
-if(isset($_POST['deleteArticle'])) {
-    supprimerArticle($_POST['deleteArticle']);
-    echo "<script> alert(\"Article retiré du panier\");</script>";
-}
-
-
-if (isset($_POST['unsetSession'])){
-    $_SESSION['panier'] = array();
-}
-
-if (!isset($_SESSION['panier'])) {
-    montant_panier();
-}
-
-// var_dump( $_SESSION['panier']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,38 +37,54 @@ if (!isset($_SESSION['panier'])) {
         include("header.php") 
         ?>
 
+        <div class="container">
 
 
-    <main>
+            <?php
+
+                    $monPanier = $_SESSION['panier'];
+                    showPanier($monPanier);
 
 
-            <div class="container">
+                echo 'montant de frais de port : ' . fdp() . '€';
+                echo "<br>";
+                echo 'montant de votre commande : ' . montantCommande() . '€ TTC';
+                echo "<br>";
+                echo 'dont TVA : ' . tva() . '€';
+                echo '<br>';
 
-            <h1>Mon Panier</h1>
 
 
-                <?php
+                
+            ?>
 
-                    if (empty($_SESSION['panier'])) {
-                        echo "<h2>Votre panier est vide</h2>";
-                    } else {
-                        $monPanier = $_SESSION['panier'];
-                        showPanier($monPanier);
-                        echo "<form method=\"post\" action=\"panier.php\">";
-                        echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\">";
-                        echo "</form>";    
+                        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Valider ma commande
+            </button>
 
-                    }
-
-                    echo 'montant de votre panier : ' . montant_panier() . '€';
-
-                    echo "<form method=\"post\" action=\"panierValider.php\">";
-                    echo "<input type=\"submit\" value=\"valider le panier\">";
-                    echo "</form>";    
-                    
-                ?>
-
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Votre commande est validée</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <form action="index.php" method="post">
+                        <input type="submit" name="retourIndex" value="retour à l'accueil">
+                    </form>
+                </div>
+                </div>
             </div>
+            </div>
+        </div>
 
     </main>
 

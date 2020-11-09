@@ -15,6 +15,11 @@ if (isset($_POST['IdChooseArticle'])) {
     ajoutAuPanier($chooseArticle, $id);
 }
 
+if (isset($_POST['retourIndex'])){
+    $_SESSION['panier'] = array();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
