@@ -1,6 +1,25 @@
 <?php
 session_start();
 include('functions.php');
+
+//vérifier si panier existe
+if (!isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array ();
+}
+
+$listeArticles = getArticles();
+
+if (isset($_POST['IdChooseArticle'])) {
+    $id = $_POST['IdChooseArticle'];
+    $chooseArticle = getArticleFromId($listeArticles, $id);
+    ajoutAuPanier($chooseArticle, $id);
+}
+
+if (isset($_POST['retourIndex'])){
+    $_SESSION['panier'] = array();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +43,24 @@ include('functions.php');
     <body>
  
          <?php include("header.php")?>
+
+         <main>
+
+            <div class="container">
+                <div class="row"> 
+
+                    <?php
+                    $listeArticles = getArticles();
+
+                    showArticles($listeArticles);
+                    ?>
+
+                </div>
+            </div>
+
+
+        </main>
+
 
 
 

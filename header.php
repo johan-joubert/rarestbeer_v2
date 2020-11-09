@@ -18,19 +18,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link text-white" href="boutique.php">Boutique</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Découvrir</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-white" href="index.php">Notre histoire</a>
-          <a class="dropdown-item text-white" href="#">Blog</a>
+        <a class="nav-link text-black" href="boutique.php">Boutique</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link text-white" href="#">Nous trouver</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link text-white" href="panier.php">Panier <span id="qtePanier"><?php echo nbrArticles() ?></span></a>
+        <a class="nav-link text-black" href="panier.php"><i class="fas fa-shopping-cart"></i> <span id="qtePanier"><?php echo nbrArticles() ?></span></a>
       </li>
 
     </ul>

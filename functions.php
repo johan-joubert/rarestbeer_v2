@@ -21,12 +21,47 @@
 
 function getArticles() {
     return $listes = [
-        "article 1" => ["id" => 1, "picture" => "beer.jpg", "libelle" => "westvleteren", "qte" => 1, "prixProduit" => 12],
-        "article 2" => ["id" => 2, "picture" => "beer.jpg", "libelle" => "jojobeer", "qte" => 1, "prixProduit" => 22],
-        "article 3" => ["id" => 3, "picture" => "beer.jpg", "libelle" => "megajobeer", "qte" => 1, "prixProduit" => 22],
-        "article 4" => ["id" => 4, "picture" => "beer.jpg", "libelle" => "Superbeer", "qte" => 1, "prixProduit" => 22],
-        "article 5" => ["id" => 5, "picture" => "beer.jpg", "libelle" => "Ultrabeer", "qte" => 1, "prixProduit" => 22],
-        "article 6" => ["id" => 6, "picture" => "beer.jpg", "libelle" => "Gigajobeer", "qte" => 1, "prixProduit" => 22]
+        "article 1" => ["id" => 1, 
+                        "picture" => "beer.jpg", 
+                        "libelle" => "westvleteren", 
+                        "qte" => 1, 
+                        "prixProduit" => 12,
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 2" => ["id" => 2, 
+                        "picture" => "beer.jpg", 
+                        "libelle" => "jojobeer", 
+                        "qte" => 1, 
+                        "prixProduit" => 22,
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 3" => ["id" => 3, 
+                        "picture" => "beer.jpg", 
+                        "libelle" => "megajobeer", 
+                        "qte" => 1, 
+                        "prixProduit" => 22,
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 4" => ["id" => 4, 
+                        "picture" => "beer.jpg", 
+                        "libelle" => "Superbeer", 
+                        "qte" => 1, 
+                        "prixProduit" => 22,
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 5" => ["id" => 5, 
+                        "picture" => "beer.jpg", 
+                        "libelle" => "Ultrabeer", 
+                        "qte" => 1, 
+                        "prixProduit" => 22,
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 6" => ["id" => 6, 
+                        "picture" => "beer.jpg", 
+                        "libelle" => "Gigajobeer", 
+                        "qte" => 1, 
+                        "prixProduit" => 22,
+                        "description" => "Bière belge, produite en Abbaye"]
     ];
 }
 
@@ -92,7 +127,12 @@ function verifierPanier ( $id ) {
 //compter les articles présents dans le panier
 
 function nbrArticles() {
-    return count($_SESSION['panier']);
+    $qtePanier = 0;
+    foreach($_SESSION['panier'] as $article ) {
+        $qtePanier +=  $article['qte'];
+    }
+    
+    return $qtePanier;
 }
 
 
@@ -140,6 +180,9 @@ function showProduct($article) {
         echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
+        echo "<div class=\"text-align\">" .$article["description"]. "</div><br>";
+        echo "</div>";
+        echo "<div class=\"col-md-2\">";
         echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
@@ -172,11 +215,25 @@ function modifierQtePanier () {
 
     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
         if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
-            $_SESSION['panier'][$i]['qte'] = intval($_POST['qteArticle']);
+            $_SESSION['panier'][$i]['qte'] = $_POST['qteArticle'];
+        } 
+    }
+}
+
+// modifier prix unitaire
+
+function modifierPrixUnitraire () {
+
+    for ($i = 0; $i < count($_SESSION['panier']); $i++) {
+        if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
+            $final =  $_SESSION['panier'][$i]['qte'] * $_SESSION['panier'][$i]['prixProduit'];
         }
         
     }
+
+    return $final;
 }
+
 
 
 // supprimer panier
@@ -237,10 +294,10 @@ function tva() {
 // calcul montant commande
 
 function montantCommande() {
-    $fdp = 0;
+    $finalPrice = 0;
     foreach($_SESSION['panier'] as $article) {
-        $fdp += ($article['prixProduit'] * $article['qte']) + 1;
+        $finalPrice += ($article['prixProduit'] * $article['qte']) + 1;
     }
 
-    return $fdp;
+    return $finalPrice;
 }

@@ -1,5 +1,5 @@
 nav {
-    background-color: rgba(25, 15, 8, 0.8);
+    background-color:#F2A649;
 }
 
 .navbar-nav {
@@ -16,12 +16,9 @@ nav {
 
 #qtePanier {
     margin: 0;
-    padding: 4px 10px;
+    padding: 2px 8px;
     background-color: #fff;
     color: #000;
     border-radius: 50%;
 }
 
-.row {
-    margin: 60px;
-}

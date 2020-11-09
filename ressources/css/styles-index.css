@@ -1,9 +1,15 @@
 .contain-carousel {
     height: 100vh;
     width: 100%;
-    background-image: url('../images/carousel-1.jpg');
+    background-image: url('../images/beeryChristmas.png');
+    background-position: right;
+    background-repeat: no-repeat;
 }
 
 .container {
+    padding-top: 60px;
+}
+
+.row {
     padding-top: 60px;
 }
