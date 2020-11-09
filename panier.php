@@ -13,10 +13,16 @@ if (isset($_POST['idQteArticle'])) {
 
 if(isset($_POST['deleteArticle'])) {
     supprimerArticle($_POST['deleteArticle']);
+    echo "<script> alert(\"Article retiré du panier\");</script>";
 }
 
+
 if (isset($_POST['unsetSession'])){
-    session_unset();
+    $_SESSION['panier'] = array();
+}
+
+if (!isset($_SESSION['panier'])) {
+    montant_panier();
 }
 
 // var_dump( $_SESSION['panier']);
@@ -46,7 +52,9 @@ if (isset($_POST['unsetSession'])){
 
     <body>
 
-    <?php// include("header.php") ?>
+        <?php
+        include("header.php") 
+        ?>
 
 
 
@@ -66,8 +74,10 @@ if (isset($_POST['unsetSession'])){
                         $monPanier = $_SESSION['panier'];
                         showPanier($monPanier);
                         echo "<form method=\"post\" action=\"panier.php\">";
-                        echo "<input type=\"submit\" name=\"unsetSession\">";
+                        echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\">";
                         echo "</form>";    
+
+                        echo 'montant de votre panier : ' . montant_panier() . '€';
                     }
 
                     

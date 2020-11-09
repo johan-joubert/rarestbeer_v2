@@ -34,14 +34,14 @@ function getArticles() {
 
 function showArticles($listeArticles) {
     foreach ($listeArticles as $liste => $article) {
-        echo "<form action=\"index.php\" method=\"post\">";
+        echo "<form action=\"#ancre\" method=\"post\">";
         echo "<div class=\"col-md-4\">";
         echo "<img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"> <br>";
         echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
         echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
         echo "<div class=\"text-align\">" .$article["prixProduit"]. "</div><br>";
         echo "</div>";
-        echo "<input type=\"submit\" name=\"submit\" value=\"ajouter au panier\">";
+        echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"ajouter au panier\">";
         echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
         echo "</form>";
     }
@@ -129,24 +129,41 @@ function modifierQtePanier () {
 
     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
         if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
-            $_SESSION['panier'][$i]['qte'] = $_POST['qteArticle'];
+            $_SESSION['panier'][$i]['qte'] = intval($_POST['qteArticle']);
         }
+        
     }
 }
 
 
 // supprimer panier
 
-function supprimerArticle($ref) {
-    foreach ($_SESSION['panier'] as $article) {
-        if ($article['id'] == $ref) {
-            $ref = $_POST['deleteArticle'];
-            $array = $_SESSION['panier'];
-            $key = array_search($article, $array);
-            array_splice($_SESSION['panier'], $key);    
+// function supprimerArticle($id) {
+//     foreach ($_SESSION['panier'] as $article) {
+//         if ($article['id'] == $id) {
+//             $array = $_SESSION['panier'];
+//             $key = array_search($article, $array);
+//             array_splice($_SESSION['panier'], $key);    
+//         }
+//     }
+// }
+
+function supprimerArticle($id) {
+    for ($i = 0; $i < count($_SESSION['panier']); $i++){
+        if($_SESSION['panier'][$i]['id'] == $id) {
+            array_splice($_SESSION['panier'], $i, 1);
         }
     }
 }
 
 
-// vider tout le panier 
+// montant panier
+
+function montant_panier() {
+    $total = 0;
+    foreach($_SESSION['panier'] as $article ) {
+        $total += $article['prixProduit'] * $article['qte'];
+    }
+    
+    return $total;
+}
