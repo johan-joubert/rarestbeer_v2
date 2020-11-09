@@ -68,13 +68,18 @@ if (!isset($_SESSION['panier'])) {
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Votre commande est validée</h5>
+                    <h4 class="modal-title" id="exampleModalLabel">Votre commande est validée</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <?php
+                        $date1 = date('Y-m-d'); // Date du jour
+                        setlocale(LC_TIME, "fr_FR", "French");
+                        echo  'Livraison prévu le : ' .strftime("%A %d %B %G", strtotime($date1. ' + 2 days')); 
+                    ?>
+                <h4 class="modal-title" id="exampleModalLabel">Merci de votre confiance</h4>
                 </div>
                 <div class="modal-footer">
                     <form action="index.php" method="post">

@@ -2,6 +2,11 @@
 session_start();
 include('functions.php');
 
+if (!isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array ();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +35,24 @@ include('functions.php');
 
         <?php
         include("header.php") 
+
+
         ?>
 
+        <div class="container">
+                    <?php
+                    $listeArticles = getArticles();
 
+                    if (isset($_POST['IdDescriptionArticle'])) {
+                        $id = $_POST['IdDescriptionArticle'];
+                        $article = getArticleFromId($listeArticles, $id);
+                        ajoutAuPanierPageProduct($article, $id);
+                        showProduct($article);                     
+                    }
+
+                    
+                    ?>
+        </div>
 
     <main>
 

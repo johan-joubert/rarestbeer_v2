@@ -30,7 +30,7 @@
         <a class="nav-link text-white" href="#">Nous trouver</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link text-white" href="panier.php">Panier <span><?php echo nbrArticles() ?></span></a>
+        <a class="nav-link text-white" href="panier.php">Panier <span id="qtePanier"><?php echo nbrArticles() ?></span></a>
       </li>
 
     </ul>

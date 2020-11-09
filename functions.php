@@ -34,16 +34,23 @@ function getArticles() {
 
 function showArticles($listeArticles) {
     foreach ($listeArticles as $liste => $article) {
-        echo "<form action=\"#ancre\" method=\"post\">";
         echo "<div class=\"col-md-4\">";
-        echo "<img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"> <br>";
+        echo "<img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"><br>";
         echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
         echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
         echo "<div class=\"text-align\">" .$article["prixProduit"]. "</div><br>";
-        echo "</div>";
+        echo "<form action=\"#ancre\" method=\"post\">";
         echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"ajouter au panier\">";
         echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
         echo "</form>";
+        echo "<form action=\"descriptionArticle.php\" method=\"post\">";
+        echo "<input type=\"submit\" name=\"description\" value=\"description\">";
+        echo "<input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">";
+        echo "</form>";
+
+        echo "</div>";
+
+
     }
 }
 
@@ -122,6 +129,42 @@ function showPanier($monPanier) {
     }
 }
 
+// afficher dans page produit
+
+function showProduct($article) {
+        echo "<div class=\"row\">";
+        echo "<div class=\"col-md-2\">";
+        echo "<img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"200\"> <br>";
+        echo "</div>";
+        echo "<div class=\"col-md-2\">";
+        echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
+        echo "</div>";
+        echo "<div class=\"col-md-2\">";
+        echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
+        echo "</div>";
+        echo "<div class=\"col-md-2\">";
+        echo "<div class=\"text-align\">" .$article["prixProduit"]. "</div><br>";
+        echo "</div>";
+        echo "<form action=\"panier.php\" method=\"post\">";
+        echo "<input type=\"submit\"  name=\"submit\" value=\"ajouter au panier\">";
+        echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+        echo "</form>";
+        echo "</div>";
+}
+
+// ajouter produit depuis page produit 
+
+function ajoutAuPanierPageProduct($article, $id) {
+    $isArticlesAdded = verifierPanier($id);
+    if ($isArticlesAdded == false) {
+        $article['qte'] = 1;
+        array_push( $_SESSION['panier'], $article);
+    } 
+}
+
+
+
+
 
 // modifier quantier panier
 
@@ -138,23 +181,23 @@ function modifierQtePanier () {
 
 // supprimer panier
 
-// function supprimerArticle($id) {
-//     foreach ($_SESSION['panier'] as $article) {
-//         if ($article['id'] == $id) {
-//             $array = $_SESSION['panier'];
-//             $key = array_search($article, $array);
-//             array_splice($_SESSION['panier'], $key);    
-//         }
-//     }
-// }
-
 function supprimerArticle($id) {
-    for ($i = 0; $i < count($_SESSION['panier']); $i++){
-        if($_SESSION['panier'][$i]['id'] == $id) {
-            array_splice($_SESSION['panier'], $i, 1);
+    foreach ($_SESSION['panier'] as $article) {
+        if ($article['id'] == $id) {
+            $array = $_SESSION['panier'];
+            $key = array_search($article, $array);
+            array_splice($_SESSION['panier'], $key, 1);    
         }
     }
 }
+
+// function supprimerArticle($id) {
+//     for ($i = 0; $i < count($_SESSION['panier']); $i++){
+//         if($_SESSION['panier'][$i]['id'] == $id) {
+//             array_splice($_SESSION['panier'], $i, 1);
+//         }
+//     }
+// }
 
 
 // montant panier
