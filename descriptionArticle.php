@@ -27,7 +27,8 @@ if (!isset($_SESSION['panier'])) {
         <link rel="stylesheet" href="ressources/css/styles-header.css">
         <link rel="stylesheet" href="ressources/css/styles-index.css">
         <link rel="stylesheet" href="ressources/css/styles-functions.css">
-        <link rel="stylesheet" href="ressources/css/styles-panier.css">
+        <link rel="stylesheet" href="ressources/css/styles-footer.css">
+        <link rel="stylesheet" href="ressources/css/styles-description.css">
         <title>Document</title>
     </head>
 
@@ -40,7 +41,8 @@ if (!isset($_SESSION['panier'])) {
         ?>
 
         <div class="container">
-                    <?php
+            <div class="row">
+            <?php
                     $listeArticles = getArticles();
 
                     if (isset($_POST['IdDescriptionArticle'])) {
@@ -52,6 +54,7 @@ if (!isset($_SESSION['panier'])) {
 
                     
                     ?>
+            </div>
         </div>
 
     <main>
@@ -59,9 +62,7 @@ if (!isset($_SESSION['panier'])) {
 
     </main>
 
-
-
-
+    <?php include("footer.php") ?>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

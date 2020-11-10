@@ -45,12 +45,12 @@
                     </div>
                     <div class="col-md-4 partenaire">
                         <div>
-                        <img src="ressources/images/aaLogo.png" alt="aa" width="200">
+                        <img src="ressources/images/aaLogo.png" alt="aa" width="190">
                         </div>
-                        <p>Les Alcholique Anonyme</p>
+                        <p>Les Alcholiques Anonymes</p>
                     </div>
                     <div class="col-md-12">
-                        <p class="avertissements">L’abus d’alcool est dangereux pour la santé, mais est quand même bon, à consommer avec une chope. La consommation d’alcool est vivement déconseillée aux femmes enceintes. La vente d'alcool à des mineurs de moins de 18 ans est interdite. En accédant à nos offres, vous déclarez avoir 18 ans révolus</p>
+                        <p class="avertissements">L’abus d’alcool est dangereux pour la santé, mais c'est quand même bon, à consommer avec une chope. <br> L’alcool est notre pire ennemi, fuir serait lâche !
                     </div>
                 </div>
             </div>

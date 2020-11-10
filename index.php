@@ -98,16 +98,6 @@ if (isset($_POST['retourIndex'])){
                             <?php
                                 $listeArticles = getArticles();
 
-                                showOneArticle($listeArticles['article 7']);
-                            ?>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div class="borderNew">
-                            <p>NEW</p>
-                            <?php
-                                $listeArticles = getArticles();
-
                                 showOneArticle($listeArticles['article 8']);
                             ?>
                         </div>
@@ -119,6 +109,16 @@ if (isset($_POST['retourIndex'])){
                                 $listeArticles = getArticles();
 
                                 showOneArticle($listeArticles['article 9']);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="borderNew">
+                            <p>NEW</p>
+                            <?php
+                                $listeArticles = getArticles();
+
+                                showOneArticle($listeArticles['article 10']);
                             ?>
                         </div>
                     </div>

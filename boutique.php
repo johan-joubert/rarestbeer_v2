@@ -38,6 +38,9 @@ if (isset($_POST['retourIndex'])){
             <!--LINK CSS-->
             <link rel="stylesheet" href="ressources/css/styles-header.css">
             <link rel="stylesheet" href="ressources/css/styles-index.css">
+            <link rel="stylesheet" href="ressources/css/styles-functions.css">
+            <link rel="stylesheet" href="ressources/css/styles-footer.css">
+            <link rel="stylesheet" href="ressources/css/styles-boutique.css">
         <title>Document</title>
     </head>
     <body>
@@ -46,7 +49,7 @@ if (isset($_POST['retourIndex'])){
 
          <main>
 
-            <div class="container">
+            <div class="container contain-article">
                 <div class="row"> 
 
                     <?php
@@ -62,6 +65,7 @@ if (isset($_POST['retourIndex'])){
         </main>
 
 
+        <?php include("footer.php") ?>
 
 
 
