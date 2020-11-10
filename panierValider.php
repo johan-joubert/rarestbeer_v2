@@ -6,6 +6,26 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array ();
 }
 
+if (isset($_POST['idQteArticle'])) {
+    modifierQtePanier ();
+    // modifierPrixUnitraire ();
+}
+
+
+if(isset($_POST['deleteArticle'])) {
+    supprimerArticle($_POST['deleteArticle']);
+    echo "<script> alert(\"Article retiré du panier\");</script>";
+}
+
+
+if (isset($_POST['unsetSession'])){
+    $_SESSION['panier'] = array();
+}
+
+if (!isset($_SESSION['panier'])) {
+    montant_panier();
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -42,16 +62,39 @@ if (!isset($_SESSION['panier'])) {
 
             <?php
 
-                    $monPanier = $_SESSION['panier'];
-                    showPanier($monPanier);
-
+                $monPanier = $_SESSION['panier'];
+                showPanier($monPanier);
 
                 echo 'montant de frais de port : ' . fdp() . '€';
                 echo "<br>";
-                echo 'montant de votre commande : ' . montantCommande() . '€ TTC';
-                echo "<br>";
-                echo 'dont TVA : ' . tva() . '€';
-                echo '<br>';
+                echo "<form method=\"post\" action=\"panierValider.php\">";
+                if (!isset($_POST['codePromo'])) {
+                    echo "<input type=\"texte\" name=\"codePromo\" class=\"inputPromo\">";
+                    echo "<input type=\"submit\" name=\"submitCodePromo\" value=\"valider\">"; 
+                    echo "<br>";
+                    echo 'montant de votre commande : ' . (montant_panier() + fdp()) . '€';
+                    echo '<br>';       
+                } else if (isset($_POST['codePromo']) && $_POST['codePromo'] == "superJojo"){
+                    echo "Code Promo Valide";
+                    echo "<br>";
+                    echo 'montant de votre commande : ' . (calculPromo() + fdp()) . '€';
+                    echo '<br>';       
+                } else {
+                    echo "Code promo invalide";
+                    echo "<br>";
+                    echo 'montant de votre commande : ' . (montant_panier() + fdp()) . '€';
+                    echo '<br>';       
+                }
+                echo "</form>";    
+    echo "<br>";
+                if(!isset($_POST['codePromo'])){
+                    echo 'dont TVA : ' . ((montant_panier() + fdp()) * 20 / 100) . '€';
+                    echo '<br>';    
+                } else {
+                    echo 'dont TVA : ' . ((calculPromo() + fdp()) * 20 / 100) . '€';
+                    echo '<br>';
+    
+                }
 
 
 
@@ -68,7 +111,14 @@ if (!isset($_SESSION['panier'])) {
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Votre commande est validée</h4>
+                    <?php
+                        if(!isset($_POST['codePromo'])) {
+                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .(montant_panier() + fdp()).  "€ <br> est validée</h4>";
+                        } else  {
+                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .(calculPromo() + fdp()).  "€ <br> est validée</h4>";
+
+                        }
+                    ?>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>

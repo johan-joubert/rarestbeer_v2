@@ -365,7 +365,7 @@ function calculPromo () {
         $total += ($article['prixProduit'] * $article['qte']);
     }
     
-    return $total -1;
+    return $total - 5;
 }
 
 // calcul frais de port (fdp)
@@ -386,7 +386,6 @@ function tva() {
     foreach($_SESSION['panier'] as $article) {
         $tva += (($article['prixProduit'] * $article['qte']) + 1) * (20/100);
     }
-
     return $tva;
 }
 
