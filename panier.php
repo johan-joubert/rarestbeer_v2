@@ -26,6 +26,10 @@ if (!isset($_SESSION['panier'])) {
     montant_panier();
 }
 
+// if (isset($_POST['codePromo'])) {
+//     calculPromo();
+// }
+
 // var_dump( $_SESSION['panier']);
 ?>
 <!DOCTYPE html>
@@ -84,8 +88,27 @@ if (!isset($_SESSION['panier'])) {
                             echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\">";
                             echo "</form>";    
                         
-                            echo 'montant de votre panier : ' . montant_panier() . '€';
-                            echo '<br>';
+                            echo "<form method=\"post\" action=\"panier.php\">";
+                            if (!isset($_POST['codePromo'])) {
+                                echo "<input type=\"texte\" name=\"codePromo\" class=\"inputPromo\">";
+                                echo "<input type=\"submit\" name=\"submitCodePromo\" value=\"valider\">"; 
+                                echo 'montant de votre panier : ' . montant_panier() . '€';
+                                echo '<br>';       
+                            } else if (isset($_POST['codePromo']) && $_POST['codePromo'] == "superJojo"){
+                                echo "Code Promo Valide";
+                                echo 'montant de votre panier : ' . calculPromo () . '€';
+                                echo '<br>';       
+                            } else {
+                                echo "Code promo invalide";
+                                echo 'montant de votre panier : ' . montant_panier() . '€';
+                                echo '<br>';       
+                            }
+                            echo "</form>";    
+
+                        ?>
+                    </div>
+                    <div class="col-md-6">
+                        <?php
                             echo "<form method=\"post\" action=\"panierValider.php\">";
                             echo "<input type=\"submit\" value=\"valider le panier\">";
                             echo "</form>";      

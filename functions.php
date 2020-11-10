@@ -359,6 +359,15 @@ function montant_panier() {
     return $total;
 }
 
+function calculPromo () {
+    $total = 0;
+    foreach($_SESSION['panier'] as $article ) {
+        $total += ($article['prixProduit'] * $article['qte']);
+    }
+    
+    return $total -1;
+}
+
 // calcul frais de port (fdp)
 
 function fdp() {
