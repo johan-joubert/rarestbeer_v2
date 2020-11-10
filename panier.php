@@ -8,7 +8,7 @@ if (!isset($_SESSION['panier'])) {
 
 if (isset($_POST['idQteArticle'])) {
     modifierQtePanier ();
-    modifierPrixUnitraire ();
+    // modifierPrixUnitraire ();
 }
 
 

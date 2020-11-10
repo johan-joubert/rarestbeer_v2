@@ -20,48 +20,81 @@
 //fonction pour creation du tableau d'articles
 
 function getArticles() {
-    return $listes = [
+    return  [
         "article 1" => ["id" => 1, 
-                        "picture" => "beer.jpg", 
+                        "picture" => "exBeer.png", 
                         "libelle" => "westvleteren", 
                         "qte" => 1, 
                         "prixProduit" => 12,
+                        "shortDescription" => "blabla",
                         "description" => "Bière belge, produite en Abbaye"],
 
         "article 2" => ["id" => 2, 
-                        "picture" => "beer.jpg", 
+                        "picture" => "exBeer.png", 
                         "libelle" => "jojobeer", 
                         "qte" => 1, 
                         "prixProduit" => 22,
+                        "shortDescription" => "blabla",
                         "description" => "Bière belge, produite en Abbaye"],
 
         "article 3" => ["id" => 3, 
-                        "picture" => "beer.jpg", 
+                        "picture" => "exBeer.png", 
                         "libelle" => "megajobeer", 
                         "qte" => 1, 
                         "prixProduit" => 22,
+                        "shortDescription" => "blabla",
                         "description" => "Bière belge, produite en Abbaye"],
 
         "article 4" => ["id" => 4, 
-                        "picture" => "beer.jpg", 
+                        "picture" => "exBeer.png", 
                         "libelle" => "Superbeer", 
                         "qte" => 1, 
                         "prixProduit" => 22,
+                        "shortDescription" => "blabla",
                         "description" => "Bière belge, produite en Abbaye"],
 
         "article 5" => ["id" => 5, 
-                        "picture" => "beer.jpg", 
+                        "picture" => "exBeer.png", 
                         "libelle" => "Ultrabeer", 
                         "qte" => 1, 
                         "prixProduit" => 22,
+                        "shortDescription" => "blabla",
                         "description" => "Bière belge, produite en Abbaye"],
 
         "article 6" => ["id" => 6, 
-                        "picture" => "beer.jpg", 
+                        "picture" => "exBeer.png", 
                         "libelle" => "Gigajobeer", 
                         "qte" => 1, 
                         "prixProduit" => 22,
+                        "shortDescription" => "blabla",
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 7" => ["id" => 7, 
+                        "picture" => "bc.jpg", 
+                        "libelle" => "Le Beery Christmas", 
+                        "qte" => 1, 
+                        "prixProduit" => 56,
+                        "shortDescription" => "24 bières",
+                        "description" => "Partez à l’aventure et embarquez pour un réel voyage brassicole avec notre Beery Christmas, le calendrier de l’Avent dédié à  la bière. À travers ce périple, nous vous ferons découvrir des brasseries du monde entier et nous vous en apprendrons plus sur notre passion commune : la bière. Chaque soir, nous serons des milliers à travers l’Europe à découvrir une nouvelle bière et de nouvelles saveurs. Brassées exclusivement pour vous, découvrez des styles et des procédés de brassage inédits pour une expérience gustative unique et dépaysante ! "],
+
+        "article 8" => ["id" => 8, 
+                        "picture" => "tireuseD.jpg", 
+                        "libelle" => "Tireuse", 
+                        "qte" => 1, 
+                        "prixProduit" => 189.90,
+                        "shortDescription" => "Fût de 2,5l",
+                        "description" => "Bière belge, produite en Abbaye"],
+
+        "article 9" => ["id" => 9, 
+                        "picture" => "chopeViking.jpg", 
+                        "libelle" => "Chope de Viking", 
+                        "qte" => 1, 
+                        "prixProduit" => 33,
+                        "shortDescription" => "50 cl",
                         "description" => "Bière belge, produite en Abbaye"]
+
+
+
     ];
 }
 
@@ -70,17 +103,17 @@ function getArticles() {
 function showArticles($listeArticles) {
     foreach ($listeArticles as $liste => $article) {
         echo "<div class=\"col-md-4\">";
-        echo "<img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"><br>";
-        echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
-        echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
-        echo "<div class=\"text-align\">" .$article["prixProduit"]. "</div><br>";
+        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>";
+        echo "<div class=\"libelle\">" .$article["libelle"]. "</div><br>";
+        echo "<div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>";
+        echo "<div class=\"prixProduit\">" .$article["prixProduit"]. "€</div><br>";
         echo "<form action=\"#ancre\" method=\"post\">";
-        echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"ajouter au panier\">";
-        echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+        echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\">";
+        echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\" class=\"btnAdd\">";
         echo "</form>";
         echo "<form action=\"descriptionArticle.php\" method=\"post\">";
-        echo "<input type=\"submit\" name=\"description\" value=\"description\">";
-        echo "<input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">";
+        echo "<input type=\"submit\" name=\"description\" value=\"Description\">";
+        echo "<input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\" class=\"btnDescription\">";
         echo "</form>";
 
         echo "</div>";
@@ -88,6 +121,21 @@ function showArticles($listeArticles) {
 
     }
 }
+
+function showOneArticle ($article) {
+        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>";
+        echo "<div class=\"libelle\">" .$article["libelle"]. "</div><br>";
+        echo "<div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>";
+        echo "<div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
+        echo "</form>";
+        echo "<form action=\"descriptionArticle.php\" method=\"post\">";
+        echo "<input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">";
+        echo "<input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">";
+        echo "</form>";
+        echo "<form action=\"#ancre\" method=\"post\">";
+        echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">";
+        echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+    }
 
 
 //récupérer id article
@@ -143,7 +191,7 @@ function showPanier($monPanier) {
     foreach ($monPanier as $article) {
         echo "<div class=\"row\">";
         echo "<div class=\"col-md-2\">";
-        echo "<img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"200\"> <br>";
+        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"150\"></div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
         echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
@@ -152,7 +200,7 @@ function showPanier($monPanier) {
         echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
-        echo "<div class=\"text-align\">" .$article["prixProduit"]. "</div><br>";
+        echo "<div class=\"text-align\">" .$article["prixProduit"]. "€</div><br>";
         echo "</div>";
         echo "<form action=\"panier.php\" method=\"post\">";
         echo "<div class=\"col-md-2\">";
@@ -226,12 +274,9 @@ function modifierPrixUnitraire () {
 
     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
         if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
-            $final =  $_SESSION['panier'][$i]['qte'] * $_SESSION['panier'][$i]['prixProduit'];
-        }
-        
+            $_SESSION['panier'][$i]['prixProduit'] = $_SESSION['panier'][$i]['prixProduit'] * $_POST['idQteArticle'];
+        }  
     }
-
-    return $final;
 }
 
 

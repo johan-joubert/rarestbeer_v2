@@ -40,6 +40,7 @@ if (isset($_POST['retourIndex'])){
     <link rel="stylesheet" href="ressources/css/styles-header.css">
     <link rel="stylesheet" href="ressources/css/styles-index.css">
     <link rel="stylesheet" href="ressources/css/styles-functions.css">
+    <link rel="stylesheet" href="ressources/css/styles-footer.css">
     <title>Document</title>
 </head>
 
@@ -48,26 +49,86 @@ if (isset($_POST['retourIndex'])){
     <?php include("header.php") ?>
 
 
-    <section class="contain-carousel">
-        <h1>Rarest Beer</h1>
+    <section class="contain-header">
+        <div>
+            <h1>LES BIERES LES PLUS RARES <br>A TRAVERS LE MONDE</h1>
+        </div>
     </section>
 
     <main>
 
             <div class="container">
                 <div class="row"> 
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-6 newBeer">
+                                <h2>BIÈRES SUÈDOISES</h2>
+                                <p>La bière des Vikings</p>
+                                <a href="boutique.php">J'en profite</a>
+                            </div>
+                            <div class="col-md-6 newBeer vikingBeerBG">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                    <div class="row">
+                            <div class="col-md-6 newBeer">
+                            <h2>BIÈRES D'ABBAYE</h2>
+                                <p>La WESTVLETEREN</p>
+                                <a href="boutique.php">J'en profite</a>
 
-                    <?php
-                    $listeArticles = getArticles();
+                            </div>
+                            <div class="col-md-6 newBeer westvleterenBG">
 
-                    showArticles($listeArticles);
-                    ?>
+                            </div>
+                        </div>
 
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="container blocNews">
+                <h2>NOUVEAUTÉES DU MOIS</h2>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="borderNew">
+                            <p>NEW</p>
+                            <?php
+                                $listeArticles = getArticles();
+
+                                showOneArticle($listeArticles['article 7']);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="borderNew">
+                            <p>NEW</p>
+                            <?php
+                                $listeArticles = getArticles();
+
+                                showOneArticle($listeArticles['article 8']);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="borderNew">
+                            <p>NEW</p>
+                            <?php
+                                $listeArticles = getArticles();
+
+                                showOneArticle($listeArticles['article 9']);
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
     </main>
+
+    <?php include("footer.php") ?>
 
 
 

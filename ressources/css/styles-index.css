@@ -1,15 +1,125 @@
-.contain-carousel {
+.contain-header{
     height: 100vh;
     width: 100%;
-    background-image: url('../images/beeryChristmas.png');
-    background-position: right;
-    background-repeat: no-repeat;
+    background-image: url('../images/carousel-1.jpg');
+    background-position: center;
+    background-size:cover;
 }
 
-.container {
-    padding-top: 60px;
+.contain-header h1 {
+    padding-top: 250px;
+    margin-left: 100px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 3.2em;
 }
 
-.row {
-    padding-top: 60px;
+.newBeer {
+    width: 300px;
+    height: 290px;
+    color: #fff;
+    background-color: #000;
+    margin-top: 60px;
+}
+
+.vikingBeerBG {
+    background-image: url('../images/vikingBeer.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.westvleterenBG {
+    background-image: url('../images/threeWestvleteren.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.newBeer h2 {
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.newBeer p {
+    font-size: 1.4em;
+}
+
+.newBeer a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 1.3em;
+    border-radius: 40px;
+    padding: 8px 10px;
+}
+
+
+.blocNews {
+    margin-top: 100px;
+}
+
+.borderNew {
+    padding: 40px 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.borderNew p {
+    background-color: #b85411;
+    width: 70px;
+    text-align: center;
+}
+
+.blocNews h2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.img-article{
+    margin: auto;
+}
+
+.img-article img {
+    display: block;
+    margin: auto;
+}
+
+.libelle {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.shortDescription {
+    text-align: center;
+    border: 1px solid rgb(212, 209, 209);
+}
+
+.prixProduit {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.btnDescription {
+    display: block;
+    margin: 20px 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+.btnAdd {
+    display: block;
+    margin: auto;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f2a649;
+    font-size: 1.2em;
+    font-weight: 600;
 }
