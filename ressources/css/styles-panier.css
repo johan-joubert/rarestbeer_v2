@@ -3,32 +3,19 @@ h1 {
     margin-bottom: 60px;
 }
 
-
-
-.text-align {
-    text-align: center;
-    margin: 50% auto;
-}
-
-.col-md-12 {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-img {
-    display: block;
-    margin: auto;
-}
-
-.container {
-    margin-top: 60px;
-    padding-top : 60px;
-}
-
-input {
-    margin: 50% auto;
-}
-
 .qteArticle {
-    width: 100px;
+    width: 80px;
+} 
+
+.btnDeleteArticle {
+    width: 30px;
+}
+
+.btnDelete {
+    border: none;
+    background-color: #fff;
+    margin-top: -50px;
+}
+
+.align-items-center {
 }

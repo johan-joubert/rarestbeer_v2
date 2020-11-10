@@ -63,30 +63,35 @@ if (!isset($_SESSION['panier'])) {
 
 
             <div class="container">
+                <h1>Mon Panier</h1>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="containArticle">
+                            <?php
+                            if (empty($_SESSION['panier'])) {
+                                echo "<h2>Votre panier est vide</h2>";
+                            } else {
+                                $monPanier = $_SESSION['panier'];
+                                showPanier($monPanier);
+                            }
+                            ?>
+                        </div>
+                    </div>
 
-            <h1>Mon Panier</h1>
-
-
-                <?php
-
-                    if (empty($_SESSION['panier'])) {
-                        echo "<h2>Votre panier est vide</h2>";
-                    } else {
-                        $monPanier = $_SESSION['panier'];
-                        showPanier($monPanier);
-                        echo "<form method=\"post\" action=\"panier.php\">";
-                        echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\">";
-                        echo "</form>";    
-
-                    }
-
-                    echo 'montant de votre panier : ' . montant_panier() . '€';
-
-                    echo "<form method=\"post\" action=\"panierValider.php\">";
-                    echo "<input type=\"submit\" value=\"valider le panier\">";
-                    echo "</form>";    
-                    
-                ?>
+                    <div class="col-md-6">
+                        <?php
+                            echo "<form method=\"post\" action=\"panier.php\">";
+                            echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\">";
+                            echo "</form>";    
+                        
+                            echo 'montant de votre panier : ' . montant_panier() . '€';
+                            echo '<br>';
+                            echo "<form method=\"post\" action=\"panierValider.php\">";
+                            echo "<input type=\"submit\" value=\"valider le panier\">";
+                            echo "</form>";      
+                        ?>
+                    </div>
+                </div>
 
             </div>
 

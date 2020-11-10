@@ -241,30 +241,29 @@ function nbrArticles() {
 
 function showPanier($monPanier) {
     foreach ($monPanier as $article) {
-        echo "<div class=\"row\">";
+        echo "<div class=\"row align-items-center\">";
         echo "<div class=\"col-md-2\">";
-        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"150\"></div><br>";
+        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"80\"></div><br>";
+        echo "</div>";
+        echo "<div class=\"col-md-3 align-items-center\">";
+        echo "<div class=\"align-items-center\">" .$article["libelle"]. "</div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
-        echo "<div class=\"text-align\">" .$article["libelle"]. "</div><br>";
+        echo "<div class=\"align\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
-        echo "<div class=\"text-align\">" .$article["qte"]. "</div><br>";
-        echo "</div>";
-        echo "<div class=\"col-md-2\">";
-        echo "<div class=\"text-align\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
-        echo "</div>";
-        echo "<form action=\"panier.php\" method=\"post\">";
-        echo "<div class=\"col-md-2\">";
+        echo "<form action=\"panier.php\" method=\"post\" class=\"align\">";
         echo "<input type=\"number\"  max=15 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">";
         echo "<input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">";
         echo "<input type=\"submit\" name=\"modifier\" value=\"modifier\">";
         echo "</div>";
         echo "</form>";
-        echo "<form method=\"post\" action=\"panier.php\">";
-        echo "<input type=\"submit\" name=\"delete\" value=\"supprimer\">";
+        echo "<div class=\"col-md-2\">";
+        echo "<form method=\"post\" action=\"panier.php\" class=\"btnDeleteArticle \">";
+        echo "<input type=\"submit\" name=\"delete\" value=\"supprimer\" class=\"btnDelete\">";
         echo "<input type=\"hidden\" name=\"deleteArticle\" value=\"" .$article['id']."\">";
         echo "</form>";
+        echo "</div>";
         echo "</div>";
     }
 }
