@@ -46,17 +46,21 @@ if (isset($_POST['retourIndex'])){
 
 <body>
 
+<!--HEADER-->
     <?php include("header.php") ?>
 
 
     <section class="contain-header">
         <div>
             <h1>LES BIERES LES PLUS RARES <br>A TRAVERS LE MONDE</h1>
+            <a href="boutique.php">JE COMMANDE</a>
         </div>
     </section>
 
+    <!--MAIN-->
     <main>
 
+        <!--Bloc suggestion-->
             <div class="container">
                 <div class="row"> 
                     <div class="col-md-5">
@@ -64,7 +68,7 @@ if (isset($_POST['retourIndex'])){
                             <div class="col-md-6 newBeer">
                                 <h2>BIÈRES SUÈDOISES</h2>
                                 <p>La bière des Vikings</p>
-                                <a href="boutique.php">J'en profite</a>
+                                <a href="boutique.php" class="linkNews">J'en profite</a>
                             </div>
                             <div class="col-md-6 newBeer vikingBeerBG">
                                 
@@ -77,7 +81,7 @@ if (isset($_POST['retourIndex'])){
                             <div class="col-md-6 newBeer">
                             <h2>BIÈRES D'ABBAYE</h2>
                                 <p>La WESTVLETEREN</p>
-                                <a href="boutique.php">J'en profite</a>
+                                <a href="boutique.php" class="linkNews">J'en profite</a>
 
                             </div>
                             <div class="col-md-6 newBeer westvleterenBG">
@@ -89,19 +93,10 @@ if (isset($_POST['retourIndex'])){
                 </div>
             </div>
 
+        <!--News-->
             <div class="container blocNews">
                 <h2>NOUVEAUTÉES DU MOIS</h2>
                 <div class="row">
-                    <div class="col-md-4 ">
-                        <div class="borderNew">
-                            <p>NEW</p>
-                            <?php
-                                $listeArticles = getArticles();
-
-                                showOneArticle($listeArticles['article 8']);
-                            ?>
-                        </div>
-                    </div>
                     <div class="col-md-4 ">
                         <div class="borderNew">
                             <p>NEW</p>
@@ -122,12 +117,22 @@ if (isset($_POST['retourIndex'])){
                             ?>
                         </div>
                     </div>
+                    <div class="col-md-4 ">
+                        <div class="borderNew">
+                            <p>NEW</p>
+                            <?php
+                                $listeArticles = getArticles();
+                                showOneArticle($listeArticles['article 11']);
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
     </main>
 
+<!--FOOTER-->
     <?php include("footer.php") ?>
 
 

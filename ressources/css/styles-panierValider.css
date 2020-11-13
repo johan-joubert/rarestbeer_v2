@@ -1,0 +1,41 @@
+.container {
+    margin-top: 150px;
+}
+
+.btnLivraison {
+    background-color: transparent;
+    border: 1px solid #f2a649;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.container-montant {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.totalMontant {
+    font-size: 1.4em;
+}
+
+
+#montant {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        text-align: center;
+    }
+    .container-montant {
+        margin: 100px 0;
+        text-align: left;
+    }
+    #montant {
+        font-size: 1.5em;
+    }
+       
+}
+

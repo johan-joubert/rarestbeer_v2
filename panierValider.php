@@ -26,6 +26,15 @@ if (!isset($_SESSION['panier'])) {
     montant_panier();
 }
 
+// if (!isset($_SESSION['livraison'])) {
+//     $_SESSION['livraison'] = array();
+// }
+
+livraison();
+
+// var_dump($_POST);
+
+// var_dump($_SESSION['livraison']);
 
 ?>
 <!DOCTYPE html>
@@ -48,6 +57,7 @@ if (!isset($_SESSION['panier'])) {
         <link rel="stylesheet" href="ressources/css/styles-index.css">
         <link rel="stylesheet" href="ressources/css/styles-functions.css">
         <link rel="stylesheet" href="ressources/css/styles-panier.css">
+        <link rel="stylesheet" href="ressources/css/styles-panierValider.css">
         <title>Document</title>
     </head>
 
@@ -59,53 +69,47 @@ if (!isset($_SESSION['panier'])) {
 
         <div class="container">
 
-
             <?php
 
                 $monPanier = $_SESSION['panier'];
                 showPanier($monPanier);
+                echo "<div class=\"totalMontant\">Total de votre panier : " . sprintf('%.2f', montant_panier())  . " € </div>";
+            ?>
+            
+            <form action="panierValider.php" method="post">
+                <h5>Choisissez votre mode de livraison</h5>
+                <input type="checkbox" id="chronopost" name="chronopost" >
+                <label for="scales">Chronopost</label>
+                <br>
+                <input type="checkbox" id="pigeon" name="pigeon">
+                <label for="scales">Pigeon voyageur</label>
+                <br>
+                <br>
+                <input type="submit" value="Valider" id="submitLivraison" class="btnLivraison">
+            </form>
 
-                echo 'montant de frais de port : ' . fdp() . '€';
-                echo "<br>";
-                echo "<form method=\"post\" action=\"panierValider.php\">";
-                if (!isset($_POST['codePromo'])) {
-                    echo "<input type=\"texte\" name=\"codePromo\" class=\"inputPromo\">";
-                    echo "<input type=\"submit\" name=\"submitCodePromo\" value=\"valider\">"; 
-                    echo "<br>";
-                    echo 'montant de votre commande : ' . (montant_panier() + fdp()) . '€';
-                    echo '<br>';       
-                } else if (isset($_POST['codePromo']) && $_POST['codePromo'] == "superJojo"){
-                    echo "Code Promo Valide";
-                    echo "<br>";
-                    echo 'montant de votre commande : ' . (calculPromo() + fdp()) . '€';
-                    echo '<br>';       
-                } else {
-                    echo "Code promo invalide";
-                    echo "<br>";
-                    echo 'montant de votre commande : ' . (montant_panier() + fdp()) . '€';
-                    echo '<br>';       
-                }
-                echo "</form>";    
-    echo "<br>";
-                if(!isset($_POST['codePromo'])){
-                    echo 'dont TVA : ' . ((montant_panier() + fdp()) * 20 / 100) . '€';
-                    echo '<br>';    
-                } else {
-                    echo 'dont TVA : ' . ((calculPromo() + fdp()) * 20 / 100) . '€';
+            
+            <div class="container-montant">
+                <form action="panierValider.php" method="post">
+                    <input type="text" id="codePromo" name="codePromo" placeholder="code de réduction">
+                    <input type="submit" class="btnPromo">
+                </form>
+            <?php
+                    echo showPromo ();
+                    echo "Montant frais de port : ";
+                    echo fdp(). " €";
                     echo '<br>';
-    
-                }
-
-
-
-                
+                    echo "<div id=\"montant\">Total de votre commande <br>" . sprintf('%.2f',( montantCommande() )). " €</div>";
+                    echo '<br>';
+                    echo 'dont TVA : ';
+                    echo tva() . '€';
+                    echo '<br>';
+                    echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"> VALIDER MA COMMANDE </button>';
+                    $nouveauMontant = sprintf('%.2f',( montantCommande() ));
             ?>
 
-                        <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Valider ma commande
-            </button>
-
+            </div>
+            
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -113,9 +117,9 @@ if (!isset($_SESSION['panier'])) {
                 <div class="modal-header">
                     <?php
                         if(!isset($_POST['codePromo'])) {
-                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .(montant_panier() + fdp()).  "€ <br> est validée</h4>";
+                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .$nouveauMontant.  "€ <br> est validée</h4>";
                         } else  {
-                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .(calculPromo() + fdp()).  "€ <br> est validée</h4>";
+                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .$nouveauMontant.  "€ <br> est validée</h4>";
 
                         }
                     ?>
@@ -142,6 +146,9 @@ if (!isset($_SESSION['panier'])) {
         </div>
 
     </main>
+
+    <?php include("footer.php") ?>
+
 
 
 

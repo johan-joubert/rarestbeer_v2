@@ -35,19 +35,19 @@
                         <div>
                         <img src="ressources/images/VikingLogo.png" alt="viking-du-nord" width="200">
                         </div>
-                        <p>Les Vikings Du Nord</p>
+                        <p>Association des Vikings Du Nord</p>
                     </div>
                     <div class="col-md-4 partenaire">
                         <div>
                         <img src="ressources/images/VikingLogo2.png" alt="viking-serie" width="150">
                         </div>
-                        <p>Série télévisé VIKINGS</p>
+                        <p>Série télévisée VIKINGS</p>
                     </div>
                     <div class="col-md-4 partenaire">
                         <div>
                         <img src="ressources/images/aaLogo.png" alt="aa" width="190">
                         </div>
-                        <p>Les Alcholiques Anonymes</p>
+                        <p>Les Alcoolos Anonymus</p>
                     </div>
                     <div class="col-md-12">
                         <p class="avertissements">L’abus d’alcool est dangereux pour la santé, mais c'est quand même bon, à consommer avec une chope. <br> L’alcool est notre pire ennemi, fuir serait lâche !

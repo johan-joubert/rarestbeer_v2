@@ -50,7 +50,7 @@ function getArticles() {
 
         "article 3" => ["id" => 3, 
                         "picture" => "west12.jpg", 
-                        "libelle" => "Westvleteren, 12°", 
+                        "libelle" => "Westvleteren 12", 
                         "qte" => 1, 
                         "prixProduit" => 4.10,
                         "shortDescription" => "Belge, Brune, 33 cL, 12°",
@@ -109,8 +109,22 @@ function getArticles() {
                         En bouche, on y retrouve des saveurs de malt, de houblon, d'herbes, de pin, de pêche et d'agrumes.                      
                         C'est une bière gourmande et légère avec un caractère bien houblonné menant vers une finale sèche et fruitée."],
 
-
         "article 8" => ["id" => 8, 
+                        "picture" => "darkLord.jpg", 
+                        "libelle" => "Batemans Dark Lord", 
+                        "qte" => 1, 
+                        "prixProduit" => 3.70,
+                        "shortDescription" => "Anglaise, Strong Ale, 50 cL, 5°",
+                        "description" => "La Dark Lord de la Brasserie Batemans n'a aucun rapport avec le justicier, mais plutôt avec une brasserie indépendante, qui envoie des bières seigneuriales à l'assaut des amateurs de bière. 
+                        <br>
+                        <br>
+                        Cette bière vient d'Angleterre, de la brasserie Batemans, qui est une grande famille de brasseurs. 
+                        <br>
+                        <br>
+                        De couleur rubis sombre, cette bière se coiffe d'une mousse beige peu persistante. Les arômes de caramels vous arriveront juste avant ceux des malts torréfiés, pour s'unir dans une belle harmonie. En bouche, des saveurs de malts chocolat réhaussé par du caramel vous envahiront et seront bien équilibrés par une carbonication assez intense, mais des plus délectanles."],
+
+
+        "article 9" => ["id" => 9, 
                         "picture" => "bc.jpg", 
                         "libelle" => "Le Beery Christmas", 
                         "qte" => 1, 
@@ -118,7 +132,7 @@ function getArticles() {
                         "shortDescription" => "24 bières",
                         "description" => "Partez à l’aventure et embarquez pour un réel voyage brassicole avec notre Beery Christmas, le calendrier de l’Avent dédié à  la bière. À travers ce périple, nous vous ferons découvrir des brasseries du monde entier et nous vous en apprendrons plus sur notre passion commune : la bière. Chaque soir, nous serons des milliers à travers l’Europe à découvrir une nouvelle bière et de nouvelles saveurs. Brassées exclusivement pour vous, découvrez des styles et des procédés de brassage inédits pour une expérience gustative unique et dépaysante ! "],
 
-        "article 9" => ["id" => 9, 
+        "article 10" => ["id" => 10, 
                         "picture" => "tireuseD.jpg", 
                         "libelle" => "Tireuse Findrak", 
                         "qte" => 1, 
@@ -140,7 +154,7 @@ function getArticles() {
                         
                         Garantie à vie."],
 
-        "article 10" => ["id" => 10, 
+        "article 11" => ["id" => 11, 
                         "picture" => "chopeViking.jpg", 
                         "libelle" => "Chope de Viking", 
                         "qte" => 1, 
@@ -173,6 +187,8 @@ function showArticles($listeArticles) {
         echo "</div>";
     }
 }
+
+// afficher un seul article 
 
 function showOneArticle ($article) {
         echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>";
@@ -241,25 +257,28 @@ function nbrArticles() {
 
 function showPanier($monPanier) {
     foreach ($monPanier as $article) {
-        echo "<div class=\"row align-items-center\">";
+        echo "<div class=\"row align-items-center afterLigne\">";
         echo "<div class=\"col-md-2\">";
-        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"80\"></div><br>";
+        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"100\"></div><br>";
         echo "</div>";
         echo "<div class=\"col-md-3 align-items-center\">";
-        echo "<div class=\"align-items-center\">" .$article["libelle"]. "</div><br>";
+        echo "<div class=\"align-items-center libelle\">" .$article["libelle"]. "</div><br>";
+        echo "<div class=\"align\">" .sprintf('%.2f', $article["prixProduit"]). "€ / unité </div><br>";
         echo "</div>";
         echo "<div class=\"col-md-2\">";
-        echo "<div class=\"align\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
-        echo "</div>";
-        echo "<div class=\"col-md-2\">";
-        echo "<form action=\"panier.php\" method=\"post\" class=\"align\">";
+        echo "<form action=\"#\" method=\"post\" class=\"align\">";
         echo "<input type=\"number\"  max=15 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">";
+        echo "<br>";
         echo "<input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">";
-        echo "<input type=\"submit\" name=\"modifier\" value=\"modifier\">";
+        echo "<input type=\"submit\" name=\"modifier\" value=\"Modifier\" class=\"btnQte\">";
         echo "</div>";
         echo "</form>";
+        echo "<div class=\"col-md-3\">";
+        echo "<div class=\"align prixModifie\">" .sprintf('%.2f', ($article["prixProduit"] * $article["qte"])). " €</div><br>";
+        echo "<div class=\"consigne\">dont " .sprintf('%.2f', ($article["prixProduit"] * $article["qte"])* 0.10). " € de consigne</div>";
+        echo "</div>";
         echo "<div class=\"col-md-2\">";
-        echo "<form method=\"post\" action=\"panier.php\" class=\"btnDeleteArticle \">";
+        echo "<form method=\"post\" action=\"#\" class=\"btnDeleteArticle \">";
         echo "<input type=\"submit\" name=\"delete\" value=\"supprimer\" class=\"btnDelete\">";
         echo "<input type=\"hidden\" name=\"deleteArticle\" value=\"" .$article['id']."\">";
         echo "</form>";
@@ -316,13 +335,13 @@ function modifierQtePanier () {
 
 // modifier prix unitaire
 
-function modifierPrixUnitraire () {
-
+function modifierPrixUnitaire () {
     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
         if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
-            $_SESSION['panier'][$i]['prixProduit'] = $_SESSION['panier'][$i]['prixProduit'] * $_POST['idQteArticle'];
+            $prixLigne = $_SESSION['panier'][$i]['prixProduit'] * $_POST['qteArticle'];
         }  
     }
+    echo $prixLigne;
 }
 
 
@@ -339,14 +358,6 @@ function supprimerArticle($id) {
     }
 }
 
-// function supprimerArticle($id) {
-//     for ($i = 0; $i < count($_SESSION['panier']); $i++){
-//         if($_SESSION['panier'][$i]['id'] == $id) {
-//             array_splice($_SESSION['panier'], $i, 1);
-//         }
-//     }
-// }
-
 
 // montant panier
 
@@ -359,24 +370,27 @@ function montant_panier() {
     return $total;
 }
 
-function calculPromo () {
-    $total = 0;
-    foreach($_SESSION['panier'] as $article ) {
-        $total += ($article['prixProduit'] * $article['qte']);
-    }
-    
-    return $total - 5;
-}
-
 // calcul frais de port (fdp)
 
 function fdp() {
-    $fdp = 0;
-    foreach($_SESSION['panier'] as $article) {
-        $fdp += $article['qte'] * 1;
+    $frais= 0;
+    if(isset($_SESSION['livraison'])){
+    if ($_SESSION['livraison'] == 'chronopost') {
+        foreach($_SESSION['panier'] as $article) {
+            $frais += ($article['prixProduit'] * $article['qte']) * 0.50 ;
+        }
     }
+    else if ($_SESSION['livraison'] == 'pigeon') {
+        foreach($_SESSION['panier'] as $article) {
+            $frais += ($article['prixProduit'] * $article['qte']) * 0.20 ;
+        }
+    }
+    else {
+        echo 'livraison non définie';
+    }
+}
 
-    return $fdp;
+    return $frais;
 }
 
 // calcul TVA
@@ -393,10 +407,43 @@ function tva() {
 // calcul montant commande
 
 function montantCommande() {
-    $finalPrice = 0;
-    foreach($_SESSION['panier'] as $article) {
-        $finalPrice += ($article['prixProduit'] * $article['qte']) + 1;
-    }
+    if(isset($_POST['codePromo']) && $_POST['codePromo'] == "superJojo") {
+        $total = 0;
+        foreach($_SESSION['panier'] as $article ) {
+            $total += $article['prixProduit'] * $article['qte'];
+        }
+        
+        return ($total +fdp())-3;
+        }
+    else {
+        $total = 0;
+        foreach($_SESSION['panier'] as $article ) {
+            $total += $article['prixProduit'] * $article['qte'];
+        }
+        
+        return $total+fdp();
+        }
+}
 
-    return $finalPrice;
+// enregistrement des modes de livraison dans session
+
+function livraison() {
+    if(isset($_POST['chronopost'])) {
+        $_SESSION['livraison'] = 'chronopost';
+    }
+    else if (isset($_POST['pigeon'])) {
+        $_SESSION['livraison'] = 'pigeon';
+
+    }
+}
+
+// affichage du code promo
+
+function showPromo () {
+    if(isset($_POST['codePromo']) && htmlspecialchars($_POST['codePromo'] == "superJojo") ) {
+        echo "votre code promotionnelle de 3 € est validé <br>";
+    }
+    else if (isset($_POST['codePromo']) && $_POST['codePromo'] != "superJojo"){
+        echo "votre code promotionnelle est invalide <br>";
+    }
 }

@@ -7,7 +7,7 @@ nav {
 }
 
 .dropdown-menu {
-    background-color:  rgba(25, 15, 8, 0.8);
+    background-color:  rgba(25, 15, 8, 0.6);
 }
 
 .nav-item {
@@ -15,10 +15,21 @@ nav {
 }
 
 #qtePanier {
-    margin: 0;
-    padding: 2px 8px;
+    margin: 5px;
+    padding: 3px 8px;
     background-color: #fff;
     color: #000;
     border-radius: 50%;
+    font-size: 0.8em;
+}
+
+/* .ilogo {
+    display: block;
+    margin: auto;
+    text-align: center;
+} */
+
+.fas {
+    font-size: 1.3em;
 }
 

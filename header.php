@@ -18,10 +18,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link text-black" href="boutique.php">Boutique</a>
+        <a class="nav-link text-black" href="boutique.php"><span class="ilogo"><i class="fas fa-store-alt"></i></span>BOUTIQUE</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link text-black" href="panier.php"><i class="fas fa-shopping-cart"></i> <span id="qtePanier"><?php echo nbrArticles() ?></span></a>
+        <a class="nav-link text-black" href="panier.php"><span class="ilogo"><i class="fas fa-shopping-cart"><span id="qtePanier"><?php echo nbrArticles() ?></span></span></i>PANIER</a>
       </li>
 
     </ul>

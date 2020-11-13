@@ -8,7 +8,6 @@ if (!isset($_SESSION['panier'])) {
 
 if (isset($_POST['idQteArticle'])) {
     modifierQtePanier ();
-    // modifierPrixUnitraire ();
 }
 
 
@@ -63,10 +62,13 @@ if (!isset($_SESSION['panier'])) {
 
 
             <div class="container">
-                <h1>Votre Panier</h1>
                 <div class="row align-items-center">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="containArticle">
+                            <div class="logoPanier">
+                                <img src="ressources/images/beercart.svg" alt="panier" id="panierBeer">
+                                <h1 id="titlePanier">Mon Panier ( <?php echo nbrArticles() ?> )</h1>
+                            </div>
                             <?php
                             if (empty($_SESSION['panier'])) {
                                 echo "<h2>Votre panier est vide</h2>";
@@ -78,22 +80,28 @@ if (!isset($_SESSION['panier'])) {
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="containMontant">
                         <?php
-                            echo "<form method=\"post\" action=\"panier.php\">";
-                            echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\">";
-                            echo "</form>";    
-                        
-                            
-                            echo 'montant de votre panier : ' . montant_panier() . '€';
+                        if(!empty($_SESSION['panier'])) {
+                            echo "<div class=\"total\">Total <span id=\"montantPanier\">" . sprintf('%.2f', montant_panier()) . " €</span> </div>";
                             echo '<br>';
+                            echo "<form method=\"post\" action=\"panierValider.php\">";
+                            echo "<input type=\"submit\" value=\"VALIDER MON PANIER\" class=\"btnValiderPanier\">";
+                            echo "</form>";      
+
+                        }
+
                         ?>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <?php
-                            echo "<form method=\"post\" action=\"panierValider.php\">";
-                            echo "<input type=\"submit\" value=\"valider le panier\">";
-                            echo "</form>";      
+                            if (!empty($_SESSION['panier'])) {
+                                echo "<form method=\"post\" action=\"panier.php\">";
+                                echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\" class=\"deletePanier\">";
+                                echo "</form>"; 
+                            }
                         ?>
                     </div>
                 </div>
@@ -103,7 +111,7 @@ if (!isset($_SESSION['panier'])) {
     </main>
 
 
-
+    <?php include("footer.php") ?>
 
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
