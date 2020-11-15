@@ -77,7 +77,7 @@ if (isset($_POST['retourIndex'])){
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
-                    <div class="row">
+                    <div class="row no-wrap">
                             <div class="col-md-6 newBeer">
                             <h2>BIÈRES D'ABBAYE</h2>
                                 <p>La WESTVLETEREN</p>

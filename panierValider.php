@@ -76,7 +76,7 @@ livraison();
                 echo "<div class=\"totalMontant\">Total de votre panier : " . sprintf('%.2f', montant_panier())  . " € </div>";
             ?>
             
-            <form action="panierValider.php" method="post">
+            <form action="panierValider.php" method="post" class="formLivraison">
                 <h5>Choisissez votre mode de livraison</h5>
                 <input type="checkbox" id="chronopost" name="chronopost" >
                 <label for="scales">Chronopost</label>
@@ -85,9 +85,10 @@ livraison();
                 <label for="scales">Pigeon voyageur</label>
                 <br>
                 <br>
-                <input type="submit" value="Valider" id="submitLivraison" class="btnLivraison">
+                <input type="submit" value="Valider" name="submitLivraison" id="submitLivraison" class="btnLivraison">
             </form>
 
+            
             
             <div class="container-montant">
                 <form action="panierValider.php" method="post">
@@ -95,17 +96,20 @@ livraison();
                     <input type="submit" class="btnPromo">
                 </form>
             <?php
-                    echo showPromo ();
-                    echo "Montant frais de port : ";
-                    echo fdp(). " €";
-                    echo '<br>';
-                    echo "<div id=\"montant\">Total de votre commande <br>" . sprintf('%.2f',( montantCommande() )). " €</div>";
-                    echo '<br>';
-                    echo 'dont TVA : ';
-                    echo tva() . '€';
-                    echo '<br>';
-                    echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"> VALIDER MA COMMANDE </button>';
-                    $nouveauMontant = sprintf('%.2f',( montantCommande() ));
+            if(isset($_SESSION['livraison'])) {
+                echo showPromo ().
+                "Montant frais de port : "
+                .fdp(). " €
+                <br>
+                <div id=\"montant\">Total de votre commande <br>" . sprintf('%.2f',( montantCommande() )). " €</div>
+                <br>
+                dont TVA :"
+                .tva() . "€
+                <br>
+                <input type=\"submit\" value=\"VALIDER MA COMMANDE\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#exampleModal\">";
+                $nouveauMontant = sprintf('%.2f',( montantCommande() ));
+
+            }
             ?>
 
             </div>
@@ -116,7 +120,7 @@ livraison();
                 <div class="modal-content">
                 <div class="modal-header">
                     <?php
-                        if(!isset($_POST['codePromo'])) {
+                        if(!isset($_POST[''])) {
                             echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .$nouveauMontant.  "€ <br> est validée</h4>";
                         } else  {
                             echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .$nouveauMontant.  "€ <br> est validée</h4>";

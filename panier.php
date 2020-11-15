@@ -84,11 +84,11 @@ if (!isset($_SESSION['panier'])) {
                         <div class="containMontant">
                         <?php
                         if(!empty($_SESSION['panier'])) {
-                            echo "<div class=\"total\">Total <span id=\"montantPanier\">" . sprintf('%.2f', montant_panier()) . " €</span> </div>";
-                            echo '<br>';
-                            echo "<form method=\"post\" action=\"panierValider.php\">";
-                            echo "<input type=\"submit\" value=\"VALIDER MON PANIER\" class=\"btnValiderPanier\">";
-                            echo "</form>";      
+                            echo "<div class=\"total\">Total <span id=\"montantPanier\">" . sprintf('%.2f', montant_panier()) . " €</span> </div>
+                            <br>
+                            <form method=\"post\" action=\"panierValider.php\">
+                            <input type=\"submit\" value=\"VALIDER MON PANIER\" class=\"btnValiderPanier\">
+                            </form>";      
 
                         }
 
@@ -98,9 +98,9 @@ if (!isset($_SESSION['panier'])) {
                     <div class="col-md-6">
                         <?php
                             if (!empty($_SESSION['panier'])) {
-                                echo "<form method=\"post\" action=\"panier.php\">";
-                                echo "<input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\" class=\"deletePanier\">";
-                                echo "</form>"; 
+                                echo "<form method=\"post\" action=\"panier.php\">
+                                <input type=\"submit\" name=\"unsetSession\" value=\"vider mon panier\" class=\"deletePanier\">
+                                </form>"; 
                             }
                         ?>
                     </div>

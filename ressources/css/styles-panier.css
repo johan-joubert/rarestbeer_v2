@@ -1,4 +1,3 @@
-
 .container {
     margin-top: 100px;
 }
@@ -113,4 +112,21 @@ input[type=number]::-webkit-inner-spin-button {
  
     height: 30px; 
  
+}
+
+
+@media screen and (max-width: 992px) {
+    .libelle, .qteArticle, .prixModifie, .prixUnitaire {
+        text-align: center;
+    }
+
+    .qteArticle, .btnQte {
+        display: block;
+        margin: auto;
+    }
+    
+    .prixModifie {
+        margin: 10px;
+    }
+
 }

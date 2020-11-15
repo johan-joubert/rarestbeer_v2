@@ -2,11 +2,20 @@
     margin-top: 150px;
 }
 
+.formLivraison {
+    margin: auto;
+    text-align: center;
+}
+
 .btnLivraison {
     background-color: transparent;
     border: 1px solid #f2a649;
     border-radius: 20px;
     padding: 5px 15px;
+}
+
+#chronopost, #pigeon {
+    text-align: right;
 }
 
 .container-montant {
@@ -16,7 +25,10 @@
 }
 
 .totalMontant {
-    font-size: 1.4em;
+    margin: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
 }
 
 

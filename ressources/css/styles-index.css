@@ -46,13 +46,11 @@
 .vikingBeerBG {
     background-image: url('../images/vikingBeer.jpg');
     background-size: cover;
-    background-position: center;
 }
 
 .westvleterenBG {
     background-image: url('../images/threeWestvleteren.jpg');
     background-size: cover;
-    background-position: center;
 }
 
 .newBeer h2 {

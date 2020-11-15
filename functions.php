@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
-
 <?php
 
 
@@ -34,7 +20,8 @@ function getArticles() {
                         Ici l'arôme semble avoir reposé quelque temps et des premiers tons d'oxydation se révèlent. Au nez, vous retrouvez les raisins secs, les fruits noirs, le miel, le caramel avec des tons sombres maltés.                     
                         La bouche révèle le caramel, le malt, et les fruits secs, accompagnés de légères notes amères.                      
                         Les Westvleteren sont ensuite appréciées également pour leur complexité aromatique, un bon moment biérologue vous attend avec ce produit.                       
-                        Découvrez également les deux autres versions de l'abbaye, la Westvleteren Abt 8 et la Westvleteren Abt 12."],
+                        Découvrez également les deux autres versions de l'abbaye, la Westvleteren Abt 8 et la Westvleteren Abt 12.",
+                        "poids" => 0.254],
 
         "article 2" => ["id" => 2, 
                         "picture" => "west8.jpg", 
@@ -46,7 +33,8 @@ function getArticles() {
                         Brassée au sein de l'abbaye de St Sixtus en Belgique, sa production annuelle reste fixe malgrè leur succès car les moines restent attachés à la règle de St Benoit, une régle d'abbaye ancestrale qui limite la production annuelle.                        
                         La Westvleteren Abt 8 est une bière versée dans une belle couleur brune foncée avec une tête de mousse généreuse, et livre au nez un bouquet profond et fantastique dominé par la levure.                       
                         La dégustation de cette Westvleteren révèle une ambiance exquise, difficilement cernable mais tellement savoureuse. On y retrouve le caramel, quelques tons torréfiés, la levure belge et les fruits noirs dans une moindre mesure.                         
-                        La Westvleteren Abt 8 reste un produit à la fois unique et propre à un savoir faire ancestal, en plus d'être un réel exercice de bièrologue !"],
+                        La Westvleteren Abt 8 reste un produit à la fois unique et propre à un savoir faire ancestal, en plus d'être un réel exercice de bièrologue !",
+                        "poids" => 0.254],
 
         "article 3" => ["id" => 3, 
                         "picture" => "west12.jpg", 
@@ -62,7 +50,8 @@ function getArticles() {
                         Revenons en à la dégustation. La Westvleteren 12 possède une robe marron foncé et se présente sur un lit de levure qu'il convient d'éviter de verser pour ne pas trop la troubler. Sa mousse beige fine est assez peu tenace, mais persiste sur environ 2 mm. Au nez, l'arôme est complexe, sucré, riche, et présente des profondeurs aromatiques liquoreuses. On peut y trouver des notes de fruits tels le raisin, la prune, les agrumes, de malt caramélisé, de vanille ... La liste est longue et très variable en fonction des analyses de chacun.                     
                         En bouche, cette bière colle aux lèvres à cause de sa teneur en sucre. Son goût est assez sucré, avec des saveurs de levure riches et rondes qui peuvent elles aussi s'interpréter de différentes manières d'une dégustation à une autre, d'un palais à un autre ... Ce qui met tout le temps d'accord, c'est bien que la Westvleteren est une bière complexe.                      
                         Complexe, de part ses arômes et son goût. Mais également, une bière convoitée, de part son mode d'approvisionnement par l'Abbaye de Saint Sixtus qui n'est pas des plus simples et il vous faudra vous armer de patience si vous souhaitez en acheter directement là bas.                       
-                        Une bière agréable pour les amateurs de bières fortes, même si certains peuvent lui reprocher un léger manque d'équilibre mais çà encore, c'est subjectif."],
+                        Une bière agréable pour les amateurs de bières fortes, même si certains peuvent lui reprocher un léger manque d'équilibre mais çà encore, c'est subjectif.",
+                        "poids" => 0.254],
 
         "article 4" => ["id" => 4, 
                         "picture" => "oppigardsIPA.jpg", 
@@ -74,7 +63,8 @@ function getArticles() {
                         Son dernier brassin porte le nom de New Sweden IPA, et se dévoile par une robe jaune pâle et lumineuse coiffée d'une petite mousse blanche.                       
                         En terme d'aromes, il y a des parfums de fruits tropicaux, d'herbes, de houblon, de citron et de pamplemousse.                       
                         En bouche, l'ensemble est relativement peu amer pour une IPA, sachant favoriser les saveurs fruitées et houblonnées avec des notes de pamplemousse, d'orange, de houblon, de fruits tropicaux, de pin, d'herbes et de mangue.                       
-                        C'est une bière légère et délicate qui s'associera facilement à vos repas."],
+                        C'est une bière légère et délicate qui s'associera facilement à vos repas.",
+                        "poids" => 0.254],
 
         "article 5" => ["id" => 5, 
                         "picture" => "oppigardsThurbo.jpg", 
@@ -85,7 +75,8 @@ function getArticles() {
                         "description" => "Partons à la découverte d'une brasserie suédoise qui a du savoir-faire : Oppigards Bryggeri. Cette Oppigards Thurbo Double IPA est une bière ambrée qui plaira assurément aux amateurs d'India Pale Ale et d'Imperial IPA.
                         Dans le verre, elle dévoile une robe orange floue et foncée s'accompagnant d'une petite tête blanc cassé.                       
                         Cette double IPA laisse échapper des parfums enivrants de houblons et de pin suivis par des notes de fruits juteux tels que le pamplemousse, l'ananas et le raisin. On remarque aussi une pointe de caramel et de miel.                       
-                        La bouche est légèrement sèche et développe des saveurs fruitées et florales de houblon. On remarque des nuances de fruits tropicaux, de pamplemousse et d'orange. La finition est finement amère."],
+                        La bouche est légèrement sèche et développe des saveurs fruitées et florales de houblon. On remarque des nuances de fruits tropicaux, de pamplemousse et d'orange. La finition est finement amère.",
+                        "poids" => 0.254],
 
         "article 6" => ["id" => 6, 
                         "picture" => "oppigardsIndianTribute.jpg", 
@@ -96,7 +87,8 @@ function getArticles() {
                         "description" => "Indian Tribute de la brasserie suédoise Oppigards est une bière au style American India Pale Ale fortement houblonnée avec des houblons américains Centennial et Cascade.
                         Orange à ambrée avec une mousse crémeuse couleur blanc cassé, elle possède des arômes de malt, de caramel, de houblon, de fleurs et de pin.                       
                         En bouche, on y retrouve des saveurs douces et fruitées avec des notes de pamplemousse, d'épices, de caramel, de houblon, de pin et d'herbes.                      
-                        Amère dans l'ensemble, elle mène vers une finale sèche et houblonnée."],
+                        Amère dans l'ensemble, elle mène vers une finale sèche et houblonnée.",
+                        "poids" => 0.254],
 
         "article 7" => ["id" => 7, 
                         "picture" => "oppigardsThurboDoubleIPA.jpg", 
@@ -107,7 +99,8 @@ function getArticles() {
                         "description" => "Everyday IPA est une Session IPA brassée avec 13g de houblon par litre de bière. Utilisant des malts Pilsnet et Carapils ainsi que des houblons Amarillo, Columbus, Citra et Simcoe, la bière possède une robe jaune et dorée avec une fine mousse blanche.
                         Au nez, elle dégage des arômes de malt, de houblon, d'herbes, d'agrumes, de fruits tropicaux, d'ananas et de pamplemousse.                      
                         En bouche, on y retrouve des saveurs de malt, de houblon, d'herbes, de pin, de pêche et d'agrumes.                      
-                        C'est une bière gourmande et légère avec un caractère bien houblonné menant vers une finale sèche et fruitée."],
+                        C'est une bière gourmande et légère avec un caractère bien houblonné menant vers une finale sèche et fruitée.",
+                        "poids" => 0.254],
 
         "article 8" => ["id" => 8, 
                         "picture" => "darkLord.jpg", 
@@ -121,7 +114,8 @@ function getArticles() {
                         Cette bière vient d'Angleterre, de la brasserie Batemans, qui est une grande famille de brasseurs. 
                         <br>
                         <br>
-                        De couleur rubis sombre, cette bière se coiffe d'une mousse beige peu persistante. Les arômes de caramels vous arriveront juste avant ceux des malts torréfiés, pour s'unir dans une belle harmonie. En bouche, des saveurs de malts chocolat réhaussé par du caramel vous envahiront et seront bien équilibrés par une carbonication assez intense, mais des plus délectanles."],
+                        De couleur rubis sombre, cette bière se coiffe d'une mousse beige peu persistante. Les arômes de caramels vous arriveront juste avant ceux des malts torréfiés, pour s'unir dans une belle harmonie. En bouche, des saveurs de malts chocolat réhaussé par du caramel vous envahiront et seront bien équilibrés par une carbonication assez intense, mais des plus délectanles.",
+                        "poids" => 0.254],
 
 
         "article 9" => ["id" => 9, 
@@ -130,7 +124,8 @@ function getArticles() {
                         "qte" => 1, 
                         "prixProduit" => 56.50,
                         "shortDescription" => "24 bières",
-                        "description" => "Partez à l’aventure et embarquez pour un réel voyage brassicole avec notre Beery Christmas, le calendrier de l’Avent dédié à  la bière. À travers ce périple, nous vous ferons découvrir des brasseries du monde entier et nous vous en apprendrons plus sur notre passion commune : la bière. Chaque soir, nous serons des milliers à travers l’Europe à découvrir une nouvelle bière et de nouvelles saveurs. Brassées exclusivement pour vous, découvrez des styles et des procédés de brassage inédits pour une expérience gustative unique et dépaysante ! "],
+                        "description" => "Partez à l’aventure et embarquez pour un réel voyage brassicole avec notre Beery Christmas, le calendrier de l’Avent dédié à  la bière. À travers ce périple, nous vous ferons découvrir des brasseries du monde entier et nous vous en apprendrons plus sur notre passion commune : la bière. Chaque soir, nous serons des milliers à travers l’Europe à découvrir une nouvelle bière et de nouvelles saveurs. Brassées exclusivement pour vous, découvrez des styles et des procédés de brassage inédits pour une expérience gustative unique et dépaysante ! ",
+                        "poids" => 15],
 
         "article 10" => ["id" => 10, 
                         "picture" => "tireuseD.jpg", 
@@ -152,7 +147,8 @@ function getArticles() {
                         <br>
                         Dimensions du produit (l x H x P) poignée et plateau égouttoir inclus 261 x 444 x 494 millimètre.
                         
-                        Garantie à vie."],
+                        Garantie à vie.",
+                        "poids" => 6],
 
         "article 11" => ["id" => 11, 
                         "picture" => "chopeViking.jpg", 
@@ -160,7 +156,8 @@ function getArticles() {
                         "qte" => 1, 
                         "prixProduit" => 33.90,
                         "shortDescription" => "50 cl",
-                        "description" => "Bière belge, produite en Abbaye"]
+                        "description" => "Bière belge, produite en Abbaye",
+                        "poids" => 0.680]
 
 
 
@@ -171,38 +168,38 @@ function getArticles() {
 
 function showArticles($listeArticles) {
     foreach ($listeArticles as $liste => $article) {
-        echo "<div class=\"col-md-4 blocArticle\">";
-        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>";
-        echo "<div class=\"libelle\">" .$article["libelle"]. "</div><br>";
-        echo "<div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>";
-        echo "<div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
-        echo "</form>";
-        echo "<form action=\"descriptionArticle.php\" method=\"post\">";
-        echo "<input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">";
-        echo "<input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">";
-        echo "</form>";
-        echo "<form action=\"#ancre\" method=\"post\">";
-        echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">";
-        echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
-        echo "</div>";
+        echo "<div class=\"col-md-4 blocArticle\">
+        <div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>
+        <div class=\"libelle\">" .$article["libelle"]. "</div><br>
+        <div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>
+        <div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>
+        </form>
+        <form action=\"descriptionArticle.php\" method=\"post\">
+        <input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">
+        <input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">
+        </form>
+        <form action=\"#ancre\" method=\"post\">
+        <input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
+        <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">
+        </div>";
     }
 }
 
 // afficher un seul article 
 
 function showOneArticle ($article) {
-        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>";
-        echo "<div class=\"libelle\">" .$article["libelle"]. "</div><br>";
-        echo "<div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>";
-        echo "<div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
-        echo "</form>";
-        echo "<form action=\"descriptionArticle.php\" method=\"post\">";
-        echo "<input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">";
-        echo "<input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">";
-        echo "</form>";
-        echo "<form action=\"#ancre\" method=\"post\">";
-        echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">";
-        echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>
+        <div class=\"libelle\">" .$article["libelle"]. "</div><br>
+        <div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>
+        <div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>
+        </form>
+        <form action=\"descriptionArticle.php\" method=\"post\">
+        <input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">
+        <input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">
+        </form>
+        <form action=\"#ancre\" method=\"post\">
+        <input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
+        <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
     }
 
 
@@ -257,54 +254,54 @@ function nbrArticles() {
 
 function showPanier($monPanier) {
     foreach ($monPanier as $article) {
-        echo "<div class=\"row align-items-center afterLigne\">";
-        echo "<div class=\"col-md-2\">";
-        echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"100\"></div><br>";
-        echo "</div>";
-        echo "<div class=\"col-md-3 align-items-center\">";
-        echo "<div class=\"align-items-center libelle\">" .$article["libelle"]. "</div><br>";
-        echo "<div class=\"align\">" .sprintf('%.2f', $article["prixProduit"]). "€ / unité </div><br>";
-        echo "</div>";
-        echo "<div class=\"col-md-2\">";
-        echo "<form action=\"#\" method=\"post\" class=\"align\">";
-        echo "<input type=\"number\"  max=15 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">";
-        echo "<br>";
-        echo "<input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">";
-        echo "<input type=\"submit\" name=\"modifier\" value=\"Modifier\" class=\"btnQte\">";
-        echo "</div>";
-        echo "</form>";
-        echo "<div class=\"col-md-3\">";
-        echo "<div class=\"align prixModifie\">" .sprintf('%.2f', ($article["prixProduit"] * $article["qte"])). " €</div><br>";
-        echo "<div class=\"consigne\">dont " .sprintf('%.2f', ($article["prixProduit"] * $article["qte"])* 0.10). " € de consigne</div>";
-        echo "</div>";
-        echo "<div class=\"col-md-2\">";
-        echo "<form method=\"post\" action=\"#\" class=\"btnDeleteArticle \">";
-        echo "<input type=\"submit\" name=\"delete\" value=\"supprimer\" class=\"btnDelete\">";
-        echo "<input type=\"hidden\" name=\"deleteArticle\" value=\"" .$article['id']."\">";
-        echo "</form>";
-        echo "</div>";
-        echo "</div>";
+        echo "<div class=\"row align-items-center afterLigne\">
+        <div class=\"col-md-2\">
+        <div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\" width=\"100\"></div><br>
+        </div>
+        <div class=\"col-md-3 align-items-center\">
+        <div class=\"align-items-center libelle\">" .$article["libelle"]. "</div><br>
+        <div class=\"align prixUnitaire\">" .sprintf('%.2f', $article["prixProduit"]). "€ / unité </div><br>
+        </div>
+        <div class=\"col-md-2\">
+        <form action=\"#\" method=\"post\" class=\"align\">
+        <input type=\"number\"  max=15 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">
+        <br>
+        <input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">
+        <input type=\"submit\" name=\"modifier\" value=\"Modifier\" class=\"btnQte\">
+        </div>
+        </form>
+        <div class=\"col-md-3\">
+        <div class=\"align prixModifie\">" .sprintf('%.2f', ($article["prixProduit"] * $article["qte"])). " €</div><br>
+        <div class=\"consigne\">dont " .sprintf('%.2f', ($article["prixProduit"] * $article["qte"])* 0.10). " € de consigne</div>
+        </div>
+        <div class=\"col-md-2\">
+        <form method=\"post\" action=\"#\" class=\"btnDeleteArticle \">
+        <input type=\"submit\" name=\"delete\" value=\"supprimer\" class=\"btnDelete\">
+        <input type=\"hidden\" name=\"deleteArticle\" value=\"" .$article['id']."\">
+        </form>
+        </div>
+        </div>";
     }
 }
 
 // afficher dans page produit
 
 function showProduct($article) {
-    echo "<div class=\"col-md-6 blocArticle\">";
-    echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>";
-    echo "</div>";
-    echo "<div class=\"col-md-6 blocArticle\">";
-    echo "<div class=\"libelle\">" .$article["libelle"]. "</div><br>";
-    echo "<div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>";
-    echo "<div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>";
-    echo "<form action=\"panier.php\" method=\"post\">";
-    echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">";
-    echo "<input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
-    echo "</div>";
-    echo "<div class=\"col-md-8 blocArticle\">";
-    echo "<h2>PRÉSENTATION</h2>";
-    echo "<div class=\"description\">" .$article["description"]. "</div><br>";
-    echo "</div>";
+    echo "<div class=\"col-md-6 blocArticle\">
+    <div class=\"img-article\"><img src=\"ressources/images/" .$article["picture"]." \" class=\"imageArticle\"></div><br>
+    </div>
+    <div class=\"col-md-6 blocArticle\">
+    <div class=\"libelle\">" .$article["libelle"]. "</div><br>
+    <div class=\"shortDescription\">" .$article["shortDescription"]. "</div><br>
+    <div class=\"prixProduit\">" .sprintf('%.2f', $article["prixProduit"]). "€</div><br>
+    <form action=\"panier.php\" method=\"post\">
+    <input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
+    <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">
+    </div>
+    <div class=\"col-md-8 blocArticle\">
+    <h2>PRÉSENTATION</h2>
+    <div class=\"description\">" .$article["description"]. "</div><br>
+    </div>";
 
 }
 
@@ -335,14 +332,14 @@ function modifierQtePanier () {
 
 // modifier prix unitaire
 
-function modifierPrixUnitaire () {
-    for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-        if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
-            $prixLigne = $_SESSION['panier'][$i]['prixProduit'] * $_POST['qteArticle'];
-        }  
-    }
-    echo $prixLigne;
-}
+// function modifierPrixUnitaire () {
+//     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
+//         if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
+//             $prixLigne = $_SESSION['panier'][$i]['prixProduit'] * $_POST['qteArticle'];
+//         }  
+//     }
+//     echo $prixLigne;
+// }
 
 
 
@@ -377,12 +374,12 @@ function fdp() {
     if(isset($_SESSION['livraison'])){
     if ($_SESSION['livraison'] == 'chronopost') {
         foreach($_SESSION['panier'] as $article) {
-            $frais += ($article['prixProduit'] * $article['qte']) * 0.50 ;
+            $frais += ($article['poids'] * $article['qte']) * 0.50 ;
         }
     }
     else if ($_SESSION['livraison'] == 'pigeon') {
         foreach($_SESSION['panier'] as $article) {
-            $frais += ($article['prixProduit'] * $article['qte']) * 0.20 ;
+            $frais += ($article['poids'] * $article['qte']) * 0.20 ;
         }
     }
     else {
