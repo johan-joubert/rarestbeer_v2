@@ -1,0 +1,174 @@
+.contain-header{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../images/carousel-1.jpg');
+    background-position: center;
+    background-size:cover;
+}
+
+.contain-header h1 {
+    padding-top: 250px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 3.2em;
+}
+
+.contain-header a {
+    margin-left: 100px;
+    margin-top: 100px;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 5px 15px;
+    color: #000;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+.contain-header a:hover {
+    text-decoration: none;
+    color: #000;
+    background-color: #f2a649;
+    transition: 0.5s;
+}
+
+.newBeer {
+    width: 300px;
+    height: 290px;
+    color: #fff;
+    background-color: #000;
+    margin-top: 60px;
+}
+
+.vikingBeerBG {
+    background-image: url('../images/vikingBeer.jpg');
+    background-size: cover;
+}
+
+.westvleterenBG {
+    background-image: url('../images/threeWestvleteren.jpg');
+    background-size: cover;
+}
+
+.newBeer h2 {
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.newBeer p {
+    font-size: 1.4em;
+}
+
+.newBeer a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    text-align: center;
+    margin-top: 60px;
+    font-size: 1.3em;
+    border-radius: 40px;
+    padding: 8px 10px;
+    transition: 0.5s;
+}
+
+.newBeer a:hover {
+    color: #000;
+    text-decoration: none;
+    background-color: #f2a649;
+    transition: 0.5s;
+}
+
+
+.blocNews {
+    margin-top: 100px;
+}
+
+.borderNew {
+    padding: 40px 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.borderNew p {
+    background-color: #b82411;
+    width: 70px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.blocNews h2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.img-article{
+    margin: auto;
+}
+
+.img-article img {
+    display: block;
+    margin: auto;
+}
+
+.libelle {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.shortDescription {
+    text-align: center;
+    border: 1px solid rgb(212, 209, 209);
+}
+
+.prixProduit {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.btnDescription {
+    display: block;
+    margin: 20px 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.6);
+    transition: 0.5s;
+}
+
+.btnDescription:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.btnAdd {
+    display: block;
+    margin: auto;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f2a649;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: 1px solid #f2a649;
+    transition: 0.5s;
+}
+
+.btnAdd:hover {
+    transition: 0.5s;
+    background-color: #fff;
+    border: 1px solid #000;
+
+}
+
+.linkNews {
+    text-decoration: none;
+}
+

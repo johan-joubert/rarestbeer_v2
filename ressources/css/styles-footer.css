@@ -1,0 +1,61 @@
+footer {
+    background-color: #000;
+    margin-top: 100px;
+}
+
+.fa-cc-paypal, .fa-cc-visa, .fa-cc-mastercard {
+    color: #fff;
+    font-size: 5em;
+    margin: 30px;
+    text-align: center;
+}
+
+.iBlock p {
+    text-align: center;
+
+}
+
+.iBlock p:after {
+    display: block;
+    height: 2px;
+    background-color: #fff;
+    width: 100%;
+    content: " ";
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.titlePartenaire {
+    text-align: center;
+    color: #fff;
+}
+
+.partenaire div {
+    height: 200px;
+}
+
+.partenaire p {
+    color: #fff;
+}
+
+.partenaire img, p {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.avertissements {
+    color: #fff;
+    margin-top: 60px;
+}
+
+.avertissements:before {
+    display: block;
+    height: 2px;
+    background-color: #fff;
+    width: 100%;
+    content: " ";
+    margin: 0 auto;
+    margin-top: 10px;
+
+}

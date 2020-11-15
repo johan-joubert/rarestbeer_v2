@@ -1,0 +1,35 @@
+nav {
+    background-color:#F2A649;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.dropdown-menu {
+    background-color:  rgba(25, 15, 8, 0.6);
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+#qtePanier {
+    margin: 5px;
+    padding: 3px 8px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    font-size: 0.8em;
+}
+
+/* .ilogo {
+    display: block;
+    margin: auto;
+    text-align: center;
+} */
+
+.fas {
+    font-size: 1.3em;
+}
+

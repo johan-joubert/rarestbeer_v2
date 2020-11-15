@@ -1,0 +1,53 @@
+.container {
+    margin-top: 150px;
+}
+
+.formLivraison {
+    margin: auto;
+    text-align: center;
+}
+
+.btnLivraison {
+    background-color: transparent;
+    border: 1px solid #f2a649;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+#chronopost, #pigeon {
+    text-align: right;
+}
+
+.container-montant {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.totalMontant {
+    margin: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+#montant {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        text-align: center;
+    }
+    .container-montant {
+        margin: 100px 0;
+        text-align: left;
+    }
+    #montant {
+        font-size: 1.5em;
+    }
+       
+}
+
