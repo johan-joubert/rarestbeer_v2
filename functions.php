@@ -354,15 +354,15 @@ function showPromo () {
 // inscription
 
 if (isset($_POST['formInscription'])) {
-    $firstName = strip_tags($_POST['firstName']);
-    $lastName = strip_tags($_POST['lastName']);
-    $email = strip_tags($_POST['email']);
-    $email2 = strip_tags($_POST['email2']);
+    $firstName = htmlspecialchars($_POST['firstName']);
+    $lastName = htmlspecialchars($_POST['lastName']);
+    $email = htmlspecialchars($_POST['email']);
+    $email2 = htmlspecialchars($_POST['email2']);
     $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
     $mdp2 = password_hash($_POST['mdp2'], PASSWORD_DEFAULT);
-    $adress = strip_tags($_POST['adress']);
-    $cp = strip_tags($_POST['cp']);
-    $city = strip_tags($_POST['city']);
+    $adress = htmlspecialchars($_POST['adress']);
+    $cp = htmlspecialchars($_POST['cp']);
+    $city = htmlspecialchars($_POST['city']);
 
     if(!empty($_POST['firstName']) && !empty($_POST['lastName']) && !empty($_POST['email']) && !empty($_POST['email2']) && !empty($_POST['mdp']) && !empty($_POST['mdp2']) && !empty($_POST['adress']) && !empty($_POST['cp']) && !empty($_POST['city'])) {
         

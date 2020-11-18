@@ -3,6 +3,20 @@ session_start();
 include('functions.php');
 
 //vérifier si panier existe
+if (!isset($_SESSION['panier'])) {
+    $_SESSION['panier'] = array ();
+}
+
+
+if (isset($_POST['IdChooseArticle'])) {
+    $id = $_POST['IdChooseArticle'];
+    $chooseArticle = getOneArticleFromId($id);
+    ajoutAuPanier($chooseArticle, $id);
+}
+
+if (isset($_POST['retourIndex'])){
+    $_SESSION['panier'] = array();
+}
 
 ?>
 
@@ -26,12 +40,19 @@ include('functions.php');
                     $isPasswordCorrect = password_verify($mdpConnect, $userInfo['mot_de_passe']);
                     
                     if($isPasswordCorrect) {
+
+                        $bdd = getConnexion();
+                        $reqAdress = $bdd->prepare("SELECT * FROM adresses WHERE id_client = ?");
+                        $reqAdress->execute([$userInfo['id']]);
+                        $adress = $reqAdress->fetch(PDO::FETCH_ASSOC);
+
                         $_SESSION['id'] = $userInfo['id'];
                         $_SESSION['prenom'] = $userInfo['prenom'];
                         $_SESSION['nom'] = $userInfo['nom'];
                         $_SESSION['email'] = $userInfo['email'];
+                        $_SESSION['adresse'] = $adress['adresse'];
                         header("Location: profil.php?id=".$_SESSION['id']);
-                        }
+                    }
                     else {
                         echo "mdp incorrecte";
                     }
@@ -75,7 +96,7 @@ include('functions.php');
     <body>
 
     <!--HEADER-->
-        <!-- <?php include("header.php") ?> -->
+        <?php include("header.php") ?>
 
     <!--MAIN-->
 

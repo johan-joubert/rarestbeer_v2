@@ -3,13 +3,18 @@ session_start();
 include('functions.php');
 getConnexion();
 
-if(isset($_GET['id']) AND $_GET['id'] > 0) {
+if(isset($_SESSION['id']) && isset($_GET['id']) && $_GET['id'] > 0) {
 
     $bdd = getConnexion();
     $getId = intval($_GET['id']);
     $reqUser = $bdd->prepare('SELECT * FROM clients WHERE id = ?');
     $reqUser->execute(array($getId));
     $userInfo = $reqUser -> fetch();
+
+    $reqAdress = $bdd->prepare("SELECT * FROM adresses WHERE id_client = ?");
+    $reqAdress->execute([$getId]);
+    $adress = $reqAdress->fetch(PDO::FETCH_ASSOC);
+
 
 //vérifier si panier existe
 if (!isset($_SESSION['panier'])) {
@@ -68,16 +73,25 @@ if (isset($_POST['retourIndex'])){
                     <h2>Bonjour <?php echo $userInfo['prenom']. ' ' .$userInfo['nom']; ?> </h2>
                 </div>
                 <div class="col-md-12">
-                    <h2></h2>
+                    <h2>email : <?php echo $userInfo['email']; ?></h2>
+                </div>
+                <div class="col-md-12">
+                    <h2>adresse : <?php echo $adress['adresse']. ' ' .$adress['code_postal']. ' ' .$adress['ville']; ?></h2>
                 </div>
             
             </div>
 
             <?php
 
-                if(isset($erreur)) {
-                    echo $erreur;
-                }
+              if (isset($_SESSION['id']) && $userInfo['id'] == $_SESSION['id']) {
+                ?>
+
+                <a href="editionProfile.php">Editer mon profil</a>
+                <br>
+                <a href="deconnexion.php">Se déconnecter</a>
+
+                <?php
+              }  
 
             ?>
         
