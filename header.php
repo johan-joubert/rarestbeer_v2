@@ -21,8 +21,12 @@
         <a class="nav-link text-black" href="boutique.php"><span class="ilogo"><i class="fas fa-store-alt"></i></span>BOUTIQUE</a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link text-black" href="connexion.php"><span class="ilogo"><i class="fas fa-user"></i></span></i>MON COMPTE</a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link text-black" href="panier.php"><span class="ilogo"><i class="fas fa-shopping-cart"><span id="qtePanier"><?php echo nbrArticles() ?></span></span></i>PANIER</a>
       </li>
+
 
     </ul>
   </div>

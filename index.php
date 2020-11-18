@@ -7,18 +7,16 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array ();
 }
 
-$listeArticles = getArticles();
 
 if (isset($_POST['IdChooseArticle'])) {
     $id = $_POST['IdChooseArticle'];
-    $chooseArticle = getArticleFromId($listeArticles, $id);
+    $chooseArticle = getOneArticleFromId($id);
     ajoutAuPanier($chooseArticle, $id);
 }
 
 if (isset($_POST['retourIndex'])){
     $_SESSION['panier'] = array();
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -101,9 +99,10 @@ if (isset($_POST['retourIndex'])){
                         <div class="borderNew">
                             <p>NEW</p>
                             <?php
-                                $listeArticles = getArticles();
+                                $article = getOneArticleFromId(4);
 
-                                showOneArticle($listeArticles['article 9']);
+                                showOneArticle($article);
+
                             ?>
                         </div>
                     </div>
@@ -111,9 +110,9 @@ if (isset($_POST['retourIndex'])){
                         <div class="borderNew">
                             <p>NEW</p>
                             <?php
-                                $listeArticles = getArticles();
+                                $article = getOneArticleFromId(5);
 
-                                showOneArticle($listeArticles['article 10']);
+                                showOneArticle($article);
                             ?>
                         </div>
                     </div>
@@ -121,8 +120,9 @@ if (isset($_POST['retourIndex'])){
                         <div class="borderNew">
                             <p>NEW</p>
                             <?php
-                                $listeArticles = getArticles();
-                                showOneArticle($listeArticles['article 11']);
+                                $article = getOneArticleFromId(6);
+
+                                showOneArticle($article);
                             ?>
                         </div>
                     </div>

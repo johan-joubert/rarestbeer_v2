@@ -7,17 +7,17 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = array ();
 }
 
-$listeArticles = getArticles();
 
 if (isset($_POST['IdChooseArticle'])) {
     $id = $_POST['IdChooseArticle'];
-    $chooseArticle = getArticleFromId($listeArticles, $id);
+    $chooseArticle = getOneArticleFromId($id);
     ajoutAuPanier($chooseArticle, $id);
 }
 
 if (isset($_POST['retourIndex'])){
     $_SESSION['panier'] = array();
 }
+
 
 
 ?>
@@ -53,9 +53,11 @@ if (isset($_POST['retourIndex'])){
                 <div class="row"> 
 
                     <?php
-                    $listeArticles = getArticles();
 
-                    showArticles($listeArticles);
+                    showArticleByRange();
+
+                    var_dump(getArticlesByRange(1));
+
                     ?>
 
                 </div>
