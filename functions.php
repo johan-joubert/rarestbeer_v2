@@ -62,8 +62,15 @@ function showArticles($articles) {
 // afficher un seul article 
 
 function showOneArticle ($article) {
+
+        $bdd = getConnexion();
+        $query = $bdd->prepare("SELECT stock FROM articles WHERE id = ?");
+        $query->execute(array($article['id']));
+        $result = $query->fetch();
+        $stock = $result['stock'];
+
         echo "<div class=\"img-article\"><img src=\"ressources/images/" .$article["image"]." \" class=\"imageArticle\"></div><br>
-        <div class=\"libelle\">" .$article["nom"]. "</div><br>
+        <div class=\"libelle\" id=\"ancre\">" .$article["nom"]. "</div><br>
         <div class=\"shortDescription\">" .$article["description"]. "</div><br>
         <div class=\"prixProduit\">" .sprintf('%.2f', $article["prix"]). "€</div><br>
         </form>
@@ -71,9 +78,22 @@ function showOneArticle ($article) {
         <input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">
         <input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">
         </form>
-        <form action=\"#ancre\" method=\"post\">
-        <input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
-        <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+        <form action=\"#ancre\" method=\"post\">";
+
+        if($stock < 5 && $stock > 0) {
+            echo "<p class=\"stockNull\">Vite il n'en reste presque plus</p>
+            <input type=\"submit\"  name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
+            <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">
+            </form>";    
+        } 
+        else if ($stock <= 0) {
+            echo "<p class=\"stockNull\">Victime de son succès <br> En cours de réaprovisionnement</p>";
+        }
+        else {
+        echo "<input type=\"submit\"  name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
+        <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">
+        </form>";
+        }
     }
 
 
@@ -87,19 +107,35 @@ function showArticleByRange () {
         
 
         foreach (getArticlesByRange($gamme['id']) as $article) {
+            $bdd = getConnexion();
+            $query = $bdd->prepare("SELECT stock FROM articles WHERE id = ?");
+            $query->execute(array($article['id']));
+            $result = $query->fetch();
+            $stock = $result['stock'];
+
             echo "<div class=\"col-md-4 blocArticle\">
             <div class=\"img-article\"><img src=\"ressources/images/" .$article["image"]." \" class=\"imageArticle\"></div><br>
             <div class=\"libelle\">" .$article["nom"]. "</div><br>
             <div class=\"shortDescription\">" .$article["description"]. "</div><br>
             <div class=\"prixProduit\">" .sprintf('%.2f', $article["prix"]). "€</div><br>
-            </form>
             <form action=\"descriptionArticle.php\" method=\"post\">
             <input type=\"submit\" name=\"description\" value=\"Description\" class=\"btnDescription\">
             <input type=\"hidden\" name=\"IdDescriptionArticle\" value=\"" .$article["id"]."\">
             </form>
-            <form action=\"#ancre\" method=\"post\">
+            <form action=\"#ancre\" method=\"post\">";
+            if ($stock < 5 && $stock > 0) {
+            echo "<p class=\"stockNull\">Vite il n'en reste moins de 5</p>
             <input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
-            <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">
+            <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+            }
+            else if ($stock <= 0) {
+                echo "<p class=\"stockNull\">Victime de son succès <br> En cours de réaprovisionnement</p>";
+            } else {
+                echo "<input type=\"submit\" id=\"ancre\" name=\"submit\" value=\"Ajouter au panier\" class=\"btnAdd\">
+                <input type=\"hidden\" name=\"IdChooseArticle\" value=\"" .$article["id"]."\">";
+    
+            }
+            echo "</form>
             </div>";
         }
     }
@@ -156,6 +192,16 @@ function nbrArticles() {
 
 function showPanier($monPanier) {
     foreach ($monPanier as $article) {
+        $bdd = getConnexion();
+        $query = $bdd->prepare("SELECT stock FROM articles WHERE id = ?");
+        $query->execute(array($article['id']));
+        $result = $query->fetch();
+        $stock = $result['stock'];
+
+        if(isset($_POST['modifier']) && $stock < $article['qte']) {
+            echo "<script>alert(\"Stock insufisant\")</script>";
+        }
+
         echo "<div class=\"row align-items-center afterLigne\">
         <div class=\"col-md-2\">
         <div class=\"img-article\"><img src=\"ressources/images/" .$article["image"]." \" class=\"imageArticle\" width=\"100\"></div><br>
@@ -166,23 +212,31 @@ function showPanier($monPanier) {
         </div>
         <div class=\"col-md-2\">
         <form action=\"#\" method=\"post\" class=\"align\">
-        <input type=\"number\"  max=15 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">
+        <input type=\"number\"  min=0 name=\"qteArticle\" value=\"" .$article['qte']. "\" class=\"qteArticle\">
         <br>
         <input type=\"hidden\" name=\"idQteArticle\" value=\"" .$article["id"]."\">
         <input type=\"submit\" name=\"modifier\" value=\"Modifier\" class=\"btnQte\">
         </div>
         </form>
-        <div class=\"col-md-3\">
-        <div class=\"align prixModifie\">" .sprintf('%.2f', ($article["prix"] * $article["qte"])). " €</div><br>
-        <div class=\"consigne\">dont " .sprintf('%.2f', ($article["prix"] * $article["qte"])* 0.10). " € de consigne</div>
-        </div>
-        <div class=\"col-md-2\">
+        <div class=\"col-md-3\">";
+        if (isset($_POST['modifier']) && $stock < $article['qte']) {
+            echo "<div class=\"align prixModifie\">" .sprintf('%.2f', ($article["prix"])). " €</div><br>
+            <div class=\"consigne\">dont " .sprintf('%.2f', ($article["prix"] * 0.10)). " € de consigne</div>
+            </div>";
+        } else {
+            echo "<div class=\"align prixModifie\">" .sprintf('%.2f', ($article["prix"] * $article["qte"])). " €</div><br>
+            <div class=\"consigne\">dont " .sprintf('%.2f', ($article["prix"] * $article["qte"])* 0.10). " € de consigne</div>
+            </div>";
+        }
+        echo "<div class=\"col-md-2\">
         <form method=\"post\" action=\"#\" class=\"btnDeleteArticle \">
         <input type=\"submit\" name=\"delete\" value=\"supprimer\" class=\"btnDelete\">
         <input type=\"hidden\" name=\"deleteArticle\" value=\"" .$article['id']."\">
         </form>
         </div>
         </div>";
+
+
     }
 }
 
@@ -232,17 +286,6 @@ function modifierQtePanier () {
     }
 }
 
-// modifier prix unitaire
-
-// function modifierPrixUnitaire () {
-//     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-//         if($_SESSION['panier'][$i]['id'] == $_POST['idQteArticle']) {
-//             $prixLigne = $_SESSION['panier'][$i]['prixProduit'] * $_POST['qteArticle'];
-//         }  
-//     }
-//     echo $prixLigne;
-// }
-
 
 
 // supprimer panier
@@ -263,7 +306,18 @@ function supprimerArticle($id) {
 function montant_panier() {
     $total = 0;
     foreach($_SESSION['panier'] as $article ) {
-        $total += $article['prix'] * $article['qte'];
+        $bdd = getConnexion();
+        $query = $bdd->prepare("SELECT stock FROM articles WHERE id = ?");
+        $query->execute(array($article['id']));
+        $result = $query->fetch();
+        $stock = $result['stock'];
+
+
+        if (isset($_POST['modifier']) && $stock < $article['qte']) {
+            $total += $article['prix'];
+        } else {
+            $total += $article['prix'] * $article['qte'];
+        }
     }
     
     return $total;
@@ -354,6 +408,7 @@ function showPromo () {
 // inscription
 
 if (isset($_POST['formInscription'])) {
+
     $firstName = htmlspecialchars($_POST['firstName']);
     $lastName = htmlspecialchars($_POST['lastName']);
     $email = htmlspecialchars($_POST['email']);
@@ -421,5 +476,154 @@ if (isset($_POST['formInscription'])) {
 }
 
 
+// connexion 
+
+    function loginUser () {
+        if(isset($_POST['formConnect'])) {
+
+            $emailConnect = strip_tags($_POST['emailConnect']);
+            $mdpConnect =  $_POST['mdpConnect'];
+
+            if(!empty($emailConnect) && !empty($mdpConnect)) {
+
+                $bdd = getConnexion();
+                $reqUser = $bdd->prepare("SELECT * FROM clients WHERE email = ?");
+                $reqUser->execute(array($emailConnect));
+                $userExist = $reqUser->rowCount();
 
 
+                if($userExist == 1) {
+
+                    $userInfo = $reqUser->fetch();
+                    $isPasswordCorrect = password_verify($mdpConnect, $userInfo['mot_de_passe']);
+                    
+                    if($isPasswordCorrect) {
+
+                        $bdd = getConnexion();
+                        $reqAdress = $bdd->prepare("SELECT * FROM adresses WHERE id_client = ?");
+                        $reqAdress->execute([$userInfo['id']]);
+                        $adress = $reqAdress->fetch(PDO::FETCH_ASSOC);
+
+                        $_SESSION['id'] = $userInfo['id'];
+                        $_SESSION['prenom'] = $userInfo['prenom'];
+                        $_SESSION['nom'] = $userInfo['nom'];
+                        $_SESSION['email'] = $userInfo['email'];
+                        $_SESSION['adresse'] = $adress['adresse'];
+                        $_SESSION['code_postal'] = $adress['code_postal'];
+                        $_SESSION['ville'] = $adress['ville'];
+                    }
+                    else {
+                        echo "mdp incorrecte";
+                    }
+                }
+                else {
+
+                    $erreur = "Mauvais identifiant !";
+
+                }
+            }
+            else {
+                $erreur = "Tous les champs doivent être remplis";
+            }
+        }
+
+    }
+
+// modifier utilisateur 
+
+function editUser () {
+    
+    if(isset($_SESSION['id'])) {
+
+        if(isset($_POST['submitNewProfil'])) {
+
+            $bdd = getConnexion();
+            $insertFirstName = $bdd->prepare("UPDATE clients SET prenom = ?, nom = ?, email = ?  WHERE id = ?");
+            $insertFirstName->execute(array($_POST['newFirstName'], $_POST['newLastName'], $_POST['newEmail'], $_SESSION['id']));
+            $_SESSION['prenom'] = $_POST['newFirstName'];
+            $_SESSION['nom'] = $_POST['newLastName'];
+            $_SESSION['email'] = $_POST['newEmail'];
+            header('Location: profil.php');
+
+        }
+
+    }  
+
+}
+function editAdress () {
+
+    if(isset($_SESSION['id'])) {
+
+        if(isset($_POST['submitNewAdress'])) {
+
+            $bdd = getConnexion();
+            $insertFirstName = $bdd->prepare("UPDATE adresses SET adresse = ?, code_postal = ?, ville = ?  WHERE id_client = ?");
+            $insertFirstName->execute(array($_POST['newAdress'], $_POST['newCP'], $_POST['newCity'], $_SESSION['id']));
+            $_SESSION['adresse'] = $_POST['newAdress'];
+            $_SESSION['code_postal'] = $_POST['newCP'];
+            $_SESSION['ville'] = $_POST['newCity'];
+            header('Location: profil.php');
+
+        }
+
+    }  
+
+}
+
+function editPassword () {
+    if(isset($_POST['newPassword']) && !empty($_POST['newPassword']) && isset($_POST['confirmNewPassword']) && !empty($_POST['confirmNewPassword']) && $_POST['confirmNewPassword']  !== $_SESSION['mot_de_passe']) {
+
+        $mdp1 = $_POST['newPassword'];
+        $mdp2 = $_POST['confirmNewPassword'];
+
+        if($mdp1 == $mdp2) {
+            $bdd = getConnexion();
+            $insertMdp = $bdd->prepare("UPDATE clients SET mot_de_passe = ? WHERE id = ?");
+            $insertMdp->execute(array(password_hash($mdp1, PASSWORD_DEFAULT), $_SESSION['id']));
+            header('Location: profil.php');    
+        }
+        else {
+            $msg = "Vos deux mots de passe ne correspondent pas !";
+        }
+
+    }
+}
+
+function saveOrderDb () {
+
+        $nbrOrder = random_int(1000000, 9999999);
+        date_default_timezone_set('Europe/Paris');
+        $date = date('d-m-y h:i:s');
+        $total = montantCommande();
+        $bdd = getConnexion();
+
+        //insertion dans la table commandes
+        $insertOrder = $bdd->prepare("INSERT INTO commandes(id_client, numero, date_commande , prix) VALUES(?, ?, ?, ?)");
+        $insertOrder->execute(array($_SESSION['id'], $nbrOrder, $date, $total));
+
+        $id = $bdd->lastInsertId();
+
+        foreach($_SESSION['panier'] as $article) {
+            $insertOrderArticle = $bdd->prepare("INSERT INTO commande_articles(id_article, id_commande, quantite) VALUES(?, ?, ?)");
+            $insertOrderArticle->execute(array( 
+                                                $article['id'], 
+                                                $id, 
+                                                $article['qte']));
+
+            $query = $bdd->prepare("SELECT stock FROM articles WHERE id = ?");
+            $query->execute(array($article['id']));
+            $result = $query->fetch();
+            $stock = $result['stock'];
+
+            $newStock = $stock - $article['qte'];
+
+            if($newStock < 0) {
+                $newStock = 0;
+            }
+
+            $query = $bdd->prepare("UPDATE articles SET stock = ? WHERE id = ?");
+            $query->execute(array(
+                                    $newStock, 
+                                    $article['id']));
+        }            
+}

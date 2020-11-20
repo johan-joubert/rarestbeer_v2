@@ -56,7 +56,6 @@ if (isset($_POST['retourIndex'])){
 
                     showArticleByRange();
 
-                    var_dump(getArticlesByRange(1));
 
                     ?>
 

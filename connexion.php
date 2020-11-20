@@ -22,51 +22,6 @@ if (isset($_POST['retourIndex'])){
 
 <?php
     // connexion
-        if(isset($_POST['formConnect'])) {
-
-            $emailConnect = strip_tags($_POST['emailConnect']);
-            $mdpConnect =  $_POST['mdpConnect'];
-
-            if(!empty($emailConnect) && !empty($mdpConnect)) {
-
-                $bdd = getConnexion();
-                $reqUser = $bdd->prepare("SELECT * FROM clients WHERE email = ?");
-                $reqUser->execute(array($emailConnect));
-                $userExist = $reqUser->rowCount();
-
-                if($userExist == 1) {
-
-                    $userInfo = $reqUser->fetch();
-                    $isPasswordCorrect = password_verify($mdpConnect, $userInfo['mot_de_passe']);
-                    
-                    if($isPasswordCorrect) {
-
-                        $bdd = getConnexion();
-                        $reqAdress = $bdd->prepare("SELECT * FROM adresses WHERE id_client = ?");
-                        $reqAdress->execute([$userInfo['id']]);
-                        $adress = $reqAdress->fetch(PDO::FETCH_ASSOC);
-
-                        $_SESSION['id'] = $userInfo['id'];
-                        $_SESSION['prenom'] = $userInfo['prenom'];
-                        $_SESSION['nom'] = $userInfo['nom'];
-                        $_SESSION['email'] = $userInfo['email'];
-                        $_SESSION['adresse'] = $adress['adresse'];
-                        header("Location: profil.php?id=".$_SESSION['id']);
-                    }
-                    else {
-                        echo "mdp incorrecte";
-                    }
-                }
-                else {
-
-                    $erreur = "Mauvais identifiant !";
-
-                }
-            }
-            else {
-                $erreur = "Tous les champs doivent être remplis";
-            }
-        }
     ?>
 
 <!DOCTYPE html>
@@ -106,7 +61,7 @@ if (isset($_POST['retourIndex'])){
 
                 <div class="col-md-6">
 
-                <form method="POST" action="">
+                <form method="POST" action="profil.php">
                     <h2>On se connait ?</h2>
                     <div class="form-group">
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailConnect" placeholder="Email">

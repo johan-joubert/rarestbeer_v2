@@ -32,6 +32,7 @@ if (!isset($_SESSION['panier'])) {
 
 livraison();
 
+
 // var_dump($_POST);
 
 // var_dump($_SESSION['livraison']);
@@ -106,7 +107,7 @@ livraison();
                 dont TVA :"
                 .tva() . "€
                 <br>
-                <input type=\"submit\" value=\"VALIDER MA COMMANDE\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#exampleModal\">";
+                <input type=\"submit\" value=\"VALIDER MA COMMANDE\" name=\"validateOrdered\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\"#exampleModal\">";
                 $nouveauMontant = sprintf('%.2f',( montantCommande() ));
 
             }
@@ -120,12 +121,9 @@ livraison();
                 <div class="modal-content">
                 <div class="modal-header">
                     <?php
-                        if(!isset($_POST[''])) {
+                        
                             echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .$nouveauMontant.  "€ <br> est validée</h4>";
-                        } else  {
-                            echo "<h4 class=\"modal-title\" id=\"exampleModalLabel\">Votre commande d'un total de : <br> " .$nouveauMontant.  "€ <br> est validée</h4>";
-
-                        }
+                        
                     ?>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -141,7 +139,7 @@ livraison();
                 </div>
                 <div class="modal-footer">
                     <form action="index.php" method="post">
-                        <input type="submit" name="retourIndex" value="retour à l'accueil">
+                        <input type="submit" name="validateOrdered" value="retour à l'accueil">
                     </form>
                 </div>
                 </div>

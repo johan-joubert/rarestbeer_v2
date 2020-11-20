@@ -92,7 +92,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.borderNew p {
+.newArticle {
     background-color: #b82411;
     width: 70px;
     text-align: center;
@@ -170,5 +170,11 @@
 
 .linkNews {
     text-decoration: none;
+}
+
+.stockNull {
+    padding: 1.5px;
+    font-size: 1em;
+    font-weight: 600;
 }
 

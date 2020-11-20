@@ -1,63 +1,50 @@
 <?php
 session_start();
 include('functions.php');
-getConnexion();
 
-if(isset($_SESSION['id'])) {
+editUser ();
 
-    $bdd = getConnexion();
-    $reqUser = $bdd->prepare("SELECT * FROM clients WHERE id = ?");
-    $reqUser->execute(array($_SESSION['id']));
-    $user = $reqUser->fetch(PDO::FETCH_ASSOC);
+editAdress ();
 
-    $reqAdress = $bdd->prepare("SELECT * FROM adresses WHERE id_client = ?");
-    $reqAdress->execute(array($_SESSION['id']));
-    $adress = $reqAdress->fetch(PDO::FETCH_ASSOC);
+// editPassword ();
+    // if(isset($_POST['newLastName']) && !empty($_POST['newLastName']) AND $_POST['newLastName'] !== $_SESSION['nom']) {
+    //     $newLastName = htmlspecialchars($_POST['newLastName']);
+    //     $insertLastName = $bdd->prepare("UPDATE clients SET nom = ? WHERE id = ?");
+    //     $insertLastName->execute(array($newLastName, $_SESSION['id']));
+    //     header('Location: profil.php');
+    // }
 
-    if(isset($_POST['newFirstName']) && !empty($_POST['newFirstName']) AND $_POST['newFirstName'] != $user['prenom']) {
-        $newFirstName = htmlspecialchars($_POST['newFirstName']);
-        $insertFirstName = $bdd->prepare("UPDATE clients SET prenom = ? WHERE id = ?");
-        $insertFirstName->execute(array($newFirstName, $_SESSION['id']));
-        header('Location: profil.php?id='.$_SESSION['id']);
-    }
+    // if(isset($_POST['newEmail']) && !empty($_POST['newEmail']) AND $_POST['newEmail'] !== $_SESSION['email']) {
+    //     $newEmail = htmlspecialchars($_POST['newEmail']);
+    //     $insertEmail = $bdd->prepare("UPDATE clients SET email = ? WHERE id = ?");
+    //     $insertEmail->execute(array($newEmail, $_SESSION['id']));
+    //     header('Location: profil.php');
+    // }
 
-    if(isset($_POST['newLastName']) && !empty($_POST['newLastName']) AND $_POST['newLastName'] != $user['nom']) {
-        $newLastName = htmlspecialchars($_POST['newLastName']);
-        $insertLastName = $bdd->prepare("UPDATE clients SET nom = ? WHERE id = ?");
-        $insertLastName->execute(array($newLastName, $_SESSION['id']));
-        header('Location: profil.php?id='.$_SESSION['id']);
-    }
+    // if(isset($_POST['newMdp']) && !empty($_POST['newMdp']) && $_POST['newMdp'] && isset($_POST['newMdp2']) && !empty($_POST['newMdp2']) && $_POST['newMdp2']  !== $_SESSION['mot_de_passe']) {
 
-    if(isset($_POST['newEmail']) && !empty($_POST['newEmail']) AND $_POST['newEmail'] != $user['email']) {
-        $newEmail = htmlspecialchars($_POST['newEmail']);
-        $insertEmail = $bdd->prepare("UPDATE clients SET email = ? WHERE id = ?");
-        $insertEmail->execute(array($newEmail, $_SESSION['id']));
-        header('Location: profil.php?id='.$_SESSION['id']);
-    }
+    //     $mdp1 = $_POST['newMdp'];
+    //     $mdp2 = $_POST['newMdp2'];
 
-    if(isset($_POST['newMdp']) && !empty($_POST['newMdp']) && $_POST['newMdp'] && isset($_POST['newMdp2']) && !empty($_POST['newMdp2']) && $_POST['newMdp2']  != $user['mot_de_passe']) {
+    //     if($mdp1 == $mdp2) {
+    //         $insertMdp = $bdd->prepare("UPDATE clients SET mot_de_passe = ? WHERE id = ?");
+    //         $insertMdp->execute(array(password_hash($mdp1, PASSWORD_DEFAULT), $_SESSION['id']));
+    //         header('Location: profil.php');    
+    //     }
+    //     else {
+    //         $msg = "Vos deux mots de passe ne correspondent pas !";
+    //     }
 
-        $mdp1 = $_POST['newMdp'];
-        $mdp2 = $_POST['newMdp2'];
-
-        if($mdp1 == $mdp2) {
-            $insertMdp = $bdd->prepare("UPDATE clients SET mot_de_passe = ? WHERE id = ?");
-            $insertMdp->execute(array(password_hash($mdp1, PASSWORD_DEFAULT), $_SESSION['id']));
-            header('Location: profil.php?id='.$_SESSION['id']);    
-        }
-        else {
-            $msg = "Vos deux mots de passe ne correspondent pas !";
-        }
-
-    }
+    // }
 
 
-    if(isset($_POST['newAdress']) && !empty($_POST['newAdress']) AND $_POST['newAdress'] != $adress['adresse']) {
-        $newAdress = htmlspecialchars($_POST['newAdress']);
-        $insertAdress = $bdd->prepare("UPDATE adresses SET adresse = ? WHERE id_client = ?");
-        $insertAdress->execute(array($newAdress, $_SESSION['id']));
-        header('Location: profil.php?id='.$_SESSION['id']);
-    }
+    // if(isset($_POST['newAdress']) && !empty($_POST['newAdress']) AND $_POST['newAdress'] !== $_SESSION['adresse']) {
+    //     $newAdress = htmlspecialchars($_POST['newAdress']);
+    //     $insertAdress = $bdd->prepare("UPDATE adresses SET adresse = ? WHERE id_client = ?");
+    //     $insertAdress->execute(array($newAdress,  $_SESSION['id']));
+    //     $_SESSION['adresse'] = $newAdress;
+    //     header('Location: profil.php');
+    // }
 
 
 
@@ -108,7 +95,7 @@ if (isset($_POST['retourIndex'])){
 <body>
 
 <!--HEADER-->
-    <!-- <?php include("header.php") ?> -->
+    <?php include("header.php") ?>
 
         <div class="container">
         
@@ -119,32 +106,102 @@ if (isset($_POST['retourIndex'])){
                 </div>
 
                 <div class="col-md-12">
-                    <form method="POST" action="">
-                        <label for="">Prenom</label>
-                        <input type="text" name="newFirstName" placeholder="Prénom" value ="<?php echo $user['prenom']; ?>"><br><br>
+                    <form method="POST" action="editionProfile.php">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="">Prenom</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="newFirstName" placeholder="Prénom" value ="<?php echo $_SESSION['prenom']; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">Nom</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="newLastName" placeholder="Nom" value ="<?php echo $_SESSION['nom']; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">Email</label>
+                                </td>
+                                <td>
+                                    <input type="email" name="newEmail" placeholder="Email" value ="<?php echo $_SESSION['email']; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="submitNewProfil" value="mettre à jour mon profil" >
+                                </td>
+                            </tr>
+                        </table>
 
-                        <label for="">Nom</label>
-                        <input type="text" name="newLastName" placeholder="Nom" value ="<?php echo $user['nom']; ?>"><br><br>
+                    </form>
 
-                        <label for="">Email</label>
-                        <input type="email" name="newEmail" placeholder="Email" value ="<?php echo $user['email']; ?>"><br><br>
+                    <form method="POST" action="editionProfile.php">
 
-                        <label for="">Mot de passe</label>
-                        <input type="password" name="newMdp" placeholder="Mot de passe"><br><br>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="">Adresse</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="newAdress" placeholder="Adresse" value ="<?php echo $_SESSION['adresse']; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">Code postal</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="newCP" placeholder="Code postal" value ="<?php echo $_SESSION['code_postal']; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">Ville</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="newCity" placeholder="Ville" value ="<?php echo $_SESSION['ville']; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="submitNewAdress" value="mettre à jour mon adresse"><br><br>
+                                </td>
+                            </tr>
+                        </table>
 
-                        <label for="">Confirmer mot de passe</label>
-                        <input type="password" name="newMdp2" placeholder="Confirmation mot de passe"><br><br>
+                    </form>
 
-                        <label for="">Adresse</label>
-                        <input type="text" name="newAdress" placeholder="Adresse" value ="<?php echo $adress['adresse']; ?>"><br><br>
+                    <form method="POST" action="editionProfile.php">
+                        <table>
+                            <!-- <tr>
+                                <td>
+                                    <input type="password" name="oldPassword" placeholder="Votre ancien mot de passe">
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <td>
+                                    <input type="password" name="newPassword" placeholder="Nouveau mot de passe">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="password" name="confirmNewPassword" placeholder="Confirmer nouveau mot de passe">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="submitNewPassord" value="mettre à jour mon mot de passe">
+                                </td>
+                            </tr>
 
-                        <label for="">Code postal</label>
-                        <input type="text" name="newCP" placeholder="Code postal" value ="<?php echo $adress['code_postal']; ?>"><br><br>
-
-                        <label for="">Ville</label>
-                        <input type="text" name="newCIty" placeholder="Ville" value ="<?php echo $adress['ville']; ?>"><br><br>
-
-                        <input type="submit" name="submitNewProfil" value="mettre à jour mon profil">
+                        </table>
+                    </form>
 
                         <?php 
 
@@ -164,20 +221,6 @@ if (isset($_POST['retourIndex'])){
                 </div>
             
             </div>
-
-            <!-- <?php
-
-              if (isset($_SESSION['id']) && $userInfo['id'] == $_SESSION['id']) {
-                ?>
-
-                <a href="#">Editer mon profil</a>
-                <br>
-                <a href="deconnexion.php">Se déconnecter</a>
-
-                <?php
-              }  
-
-            ?> -->
         
         </div>
 
@@ -197,9 +240,5 @@ if (isset($_POST['retourIndex'])){
 
 <?php
 
-}
-else {
-    header("Location: connexion.php");
-}
 
 ?>

@@ -3,18 +3,10 @@ session_start();
 include('functions.php');
 getConnexion();
 
-if(isset($_SESSION['id']) && isset($_GET['id']) && $_GET['id'] > 0) {
+if(isset($_POST['formConnect'])) {
 
-    $bdd = getConnexion();
-    $getId = intval($_GET['id']);
-    $reqUser = $bdd->prepare('SELECT * FROM clients WHERE id = ?');
-    $reqUser->execute(array($getId));
-    $userInfo = $reqUser -> fetch();
-
-    $reqAdress = $bdd->prepare("SELECT * FROM adresses WHERE id_client = ?");
-    $reqAdress->execute([$getId]);
-    $adress = $reqAdress->fetch(PDO::FETCH_ASSOC);
-
+    loginUser ();
+}
 
 //vérifier si panier existe
 if (!isset($_SESSION['panier'])) {
@@ -70,20 +62,20 @@ if (isset($_POST['retourIndex'])){
                     <h1>Mon Profil</h1>
                 </div>
                 <div class="col-md-12">
-                    <h2>Bonjour <?php echo $userInfo['prenom']. ' ' .$userInfo['nom']; ?> </h2>
+                    <h2>Bonjour <?php echo $_SESSION['prenom']. ' ' .$_SESSION['nom']; ?> </h2>
                 </div>
                 <div class="col-md-12">
-                    <h2>email : <?php echo $userInfo['email']; ?></h2>
+                    <h2>email : <?php echo $_SESSION['email']; ?></h2>
                 </div>
                 <div class="col-md-12">
-                    <h2>adresse : <?php echo $adress['adresse']. ' ' .$adress['code_postal']. ' ' .$adress['ville']; ?></h2>
+                    <h2>adresse : <?php echo $_SESSION['adresse']. ' ' .$_SESSION['code_postal']. ' ' .$_SESSION['ville']; ?></h2>
                 </div>
             
             </div>
 
             <?php
 
-              if (isset($_SESSION['id']) && $userInfo['id'] == $_SESSION['id']) {
+              if (isset($_SESSION['id'])) {
                 ?>
 
                 <a href="editionProfile.php">Editer mon profil</a>
@@ -110,9 +102,3 @@ if (isset($_POST['retourIndex'])){
 </body>
 
 </html>
-
-<?php
-
-}
-
-?>

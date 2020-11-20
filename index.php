@@ -3,9 +3,10 @@ session_start();
 include('functions.php');
 
 //vérifier si panier existe
-if (!isset($_SESSION['panier'])) {
-    $_SESSION['panier'] = array ();
-}
+
+    if (!isset($_SESSION['panier'])) {
+        $_SESSION['panier'] = array ();
+    }
 
 
 if (isset($_POST['IdChooseArticle'])) {
@@ -14,7 +15,8 @@ if (isset($_POST['IdChooseArticle'])) {
     ajoutAuPanier($chooseArticle, $id);
 }
 
-if (isset($_POST['retourIndex'])){
+if (isset($_POST['validateOrdered'])){
+    saveOrderDb();
     $_SESSION['panier'] = array();
 }
 
@@ -60,6 +62,14 @@ if (isset($_POST['retourIndex'])){
 
         <!--Bloc suggestion-->
             <div class="container">
+                <?php
+                    if(isset($_SESSION['id'])) {
+
+                        echo "<h2>Bonjour " .$_SESSION['prenom']. " ! Jetez donc un oeil aux nouveautées !</h2>";
+
+                    }
+                ?>
+
                 <div class="row"> 
                     <div class="col-md-5">
                         <div class="row">
@@ -97,7 +107,7 @@ if (isset($_POST['retourIndex'])){
                 <div class="row">
                     <div class="col-md-4 ">
                         <div class="borderNew">
-                            <p>NEW</p>
+                            <p class="newArticle">NEW</p>
                             <?php
                                 $article = getOneArticleFromId(4);
 
@@ -108,7 +118,7 @@ if (isset($_POST['retourIndex'])){
                     </div>
                     <div class="col-md-4 ">
                         <div class="borderNew">
-                            <p>NEW</p>
+                            <p class="newArticle">NEW</p>
                             <?php
                                 $article = getOneArticleFromId(5);
 
@@ -118,7 +128,7 @@ if (isset($_POST['retourIndex'])){
                     </div>
                     <div class="col-md-4 ">
                         <div class="borderNew">
-                            <p>NEW</p>
+                            <p class="newArticle">NEW</p>
                             <?php
                                 $article = getOneArticleFromId(6);
 
