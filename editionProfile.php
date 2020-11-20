@@ -6,50 +6,7 @@ editUser ();
 
 editAdress ();
 
-// editPassword ();
-    // if(isset($_POST['newLastName']) && !empty($_POST['newLastName']) AND $_POST['newLastName'] !== $_SESSION['nom']) {
-    //     $newLastName = htmlspecialchars($_POST['newLastName']);
-    //     $insertLastName = $bdd->prepare("UPDATE clients SET nom = ? WHERE id = ?");
-    //     $insertLastName->execute(array($newLastName, $_SESSION['id']));
-    //     header('Location: profil.php');
-    // }
-
-    // if(isset($_POST['newEmail']) && !empty($_POST['newEmail']) AND $_POST['newEmail'] !== $_SESSION['email']) {
-    //     $newEmail = htmlspecialchars($_POST['newEmail']);
-    //     $insertEmail = $bdd->prepare("UPDATE clients SET email = ? WHERE id = ?");
-    //     $insertEmail->execute(array($newEmail, $_SESSION['id']));
-    //     header('Location: profil.php');
-    // }
-
-    // if(isset($_POST['newMdp']) && !empty($_POST['newMdp']) && $_POST['newMdp'] && isset($_POST['newMdp2']) && !empty($_POST['newMdp2']) && $_POST['newMdp2']  !== $_SESSION['mot_de_passe']) {
-
-    //     $mdp1 = $_POST['newMdp'];
-    //     $mdp2 = $_POST['newMdp2'];
-
-    //     if($mdp1 == $mdp2) {
-    //         $insertMdp = $bdd->prepare("UPDATE clients SET mot_de_passe = ? WHERE id = ?");
-    //         $insertMdp->execute(array(password_hash($mdp1, PASSWORD_DEFAULT), $_SESSION['id']));
-    //         header('Location: profil.php');    
-    //     }
-    //     else {
-    //         $msg = "Vos deux mots de passe ne correspondent pas !";
-    //     }
-
-    // }
-
-
-    // if(isset($_POST['newAdress']) && !empty($_POST['newAdress']) AND $_POST['newAdress'] !== $_SESSION['adresse']) {
-    //     $newAdress = htmlspecialchars($_POST['newAdress']);
-    //     $insertAdress = $bdd->prepare("UPDATE adresses SET adresse = ? WHERE id_client = ?");
-    //     $insertAdress->execute(array($newAdress,  $_SESSION['id']));
-    //     $_SESSION['adresse'] = $newAdress;
-    //     header('Location: profil.php');
-    // }
-
-
-
-
-
+editPassword ();
 
 //vérifier si panier existe
 if (!isset($_SESSION['panier'])) {
@@ -68,6 +25,7 @@ if (isset($_POST['retourIndex'])){
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -179,11 +137,11 @@ if (isset($_POST['retourIndex'])){
 
                     <form method="POST" action="editionProfile.php">
                         <table>
-                            <!-- <tr>
+                            <tr>
                                 <td>
                                     <input type="password" name="oldPassword" placeholder="Votre ancien mot de passe">
                                 </td>
-                            </tr> -->
+                            </tr>
                             <tr>
                                 <td>
                                     <input type="password" name="newPassword" placeholder="Nouveau mot de passe">
@@ -196,7 +154,7 @@ if (isset($_POST['retourIndex'])){
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="submit" name="submitNewPassord" value="mettre à jour mon mot de passe">
+                                    <input type="submit" name="submitNewPassword" value="mettre à jour mon mot de passe">
                                 </td>
                             </tr>
 

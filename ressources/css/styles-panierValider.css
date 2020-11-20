@@ -4,7 +4,6 @@
 
 .formLivraison {
     margin: auto;
-    text-align: center;
 }
 
 .btnLivraison {
@@ -18,10 +17,22 @@
     text-align: right;
 }
 
+.titleShowAdress {
+    text-align: center;
+}
+
+.submitChangeAdress {
+    display: block;
+    margin: 5px auto;
+    background-color: transparent;
+    border: 1px solid #f2a649;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
 .container-montant {
     width: 80%;
-    margin: 20px auto;
-    text-align: center;
+    margin-top: 20px ;
 }
 
 .totalMontant {

@@ -56,39 +56,34 @@ if (isset($_POST['retourIndex'])){
 
         <div class="container">
         
-            <div class="row">
-            
-                <div class="col-md-12">
-                    <h1>Mon Profil</h1>
-                </div>
-                <div class="col-md-12">
-                    <h2>Bonjour <?php echo $_SESSION['prenom']. ' ' .$_SESSION['nom']; ?> </h2>
-                </div>
-                <div class="col-md-12">
-                    <h2>email : <?php echo $_SESSION['email']; ?></h2>
-                </div>
-                <div class="col-md-12">
-                    <h2>adresse : <?php echo $_SESSION['adresse']. ' ' .$_SESSION['code_postal']. ' ' .$_SESSION['ville']; ?></h2>
-                </div>
-            
+            <h1 class="text-center">Détails commande <?php echo $_POST['numberOrder']; ?> </h1>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Article</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Montant</th>
+                    </tr>
+                    </thead>
+                  
+                    <?php
+                    if (isset($_POST['detailOrderId'])) {
+
+                        $id = intval($_POST['detailOrderId']);
+
+                        $articles = getOrderArticleById($id);
+
+                        displayOrderArticle($articles);
+
+                    }
+                    ?>
+
+              </table>
+
             </div>
 
-            <?php
-
-              if (isset($_SESSION['id'])) {
-                ?>
-
-                <a href="editionProfile.php">Editer mon profil</a>
-                <br>
-                <a href="deconnexion.php">Se déconnecter</a>
-                <br>
-                <a href="commandes.php">Historique de mes commandes</a>
-
-                <?php
-              }  
-
-            ?>
-        
         </div>
 
 
