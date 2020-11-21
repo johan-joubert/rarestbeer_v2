@@ -601,7 +601,7 @@ function editPassword()
 
             if ($mdp1 == $mdp2) {
 
-                if(preg_match("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$^", $mdp1)) {
+                if($mdp1 !== $_POST['oldPassword']) {
 
                     $oldPasswordDB = getPasswordUser();
 
@@ -620,7 +620,7 @@ function editPassword()
                     }
                 }
                 else {
-                    $msg = "Votre nouveau mot de passe n'est pas terrible ! ma grand mère ";
+                    $msg = "Votre nouveau mot de passe n'est pas terrible ! ma grand mère pourrait le pirater ! ";
                     echo $msg;
                 }
             }

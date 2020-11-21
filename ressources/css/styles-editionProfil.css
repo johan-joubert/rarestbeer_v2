@@ -1,0 +1,17 @@
+.container {
+    margin-top: 100px;
+}
+
+.blocInfos {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.btnSaveInfo {
+    background-color: transparent;
+    border: 1px solid #f2a649;
+    border-radius: 20px;
+    padding: 5px 15px;
+}

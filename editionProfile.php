@@ -2,15 +2,15 @@
 session_start();
 include('functions.php');
 
-editUser ();
+editUser();
 
-editAdress ();
+editAdress();
 
-editPassword ();
+editPassword();
 
 //vérifier si panier existe
 if (!isset($_SESSION['panier'])) {
-    $_SESSION['panier'] = array ();
+    $_SESSION['panier'] = array();
 }
 
 
@@ -20,7 +20,7 @@ if (isset($_POST['IdChooseArticle'])) {
     ajoutAuPanier($chooseArticle, $id);
 }
 
-if (isset($_POST['retourIndex'])){
+if (isset($_POST['retourIndex'])) {
     $_SESSION['panier'] = array();
 }
 
@@ -47,95 +47,116 @@ if (isset($_POST['retourIndex'])){
     <link rel="stylesheet" href="ressources/css/styles-functions.css">
     <link rel="stylesheet" href="ressources/css/styles-footer.css">
     <link rel="stylesheet" href="ressources/css/styles-profile.css">
+    <link rel="stylesheet" href="ressources/css/styles-editionProfil.css">
     <title>Document</title>
 </head>
 
 <body>
 
-<!--HEADER-->
+    <!--HEADER-->
     <?php include("header.php") ?>
 
-        <div class="container">
-        
-            <div class="row">
-            
-                <div class="col-md-12">
-                    <h1>Edition de mon Profil</h1>
+    <div class="container">
+
+        <div class="row">
+
+            <form method="post" action="editionProfile.php">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="blocInfos">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Prénom</label>
+                                        <input type="text" name="newFirstName" class="form-control" id="inputEmail4" value="<?php echo $_SESSION['prenom']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Nom</label>
+                                        <input type="text" name="newLastName" class="form-control" id="inputPassword4" value="<?php echo $_SESSION['nom']; ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Email</label>
+                                    <input type="email" name="newEmail" class="form-control" id="inputAddress" value="<?php echo $_SESSION['email']; ?>">
+                                </div>
+                                <input type="submit" name="submitNewProfil" class="btnSaveInfo" value="Modifier mes informations">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="blocInfos">
+                                <div class="form-group">
+                                    <label for="inputAddress2">Adresse</label>
+                                    <input type="text" name="newAdress" class="form-control" id="inputAddress2" value="<?php echo $_SESSION['adresse']; ?>">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Ville</label>
+                                        <input type="text" name="newCity" class="form-control" id="inputCity" value="<?php echo $_SESSION['ville']; ?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputState">Code postal</label>
+                                        <input type="text" name="newCP" class="form-control" id="inputZip" value="<?php echo $_SESSION['code_postal']; ?>">
+                                    </div>
+                                </div>
+                                <input type="submit" name="submitNewAdress" class="btnSaveInfo" value="Modifier mon adresse de livraison">
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </form>
 
-                <div class="col-md-12">
-                    <form method="POST" action="editionProfile.php">
-                        <table>
-                            <tr>
-                                <td>
-                                    <label for="">Prenom</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="newFirstName" placeholder="Prénom" value ="<?php echo $_SESSION['prenom']; ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="">Nom</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="newLastName" placeholder="Nom" value ="<?php echo $_SESSION['nom']; ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="">Email</label>
-                                </td>
-                                <td>
-                                    <input type="email" name="newEmail" placeholder="Email" value ="<?php echo $_SESSION['email']; ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="submit" name="submitNewProfil" value="mettre à jour mon profil" >
-                                </td>
-                            </tr>
-                        </table>
 
-                    </form>
+            <?php
 
-                    <form method="POST" action="editionProfile.php">
+            if (isset($msg)) {
+                echo $msg;
+            }
 
-                        <table>
-                            <tr>
-                                <td>
-                                    <label for="">Adresse</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="newAdress" placeholder="Adresse" value ="<?php echo $_SESSION['adresse']; ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="">Code postal</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="newCP" placeholder="Code postal" value ="<?php echo $_SESSION['code_postal']; ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="">Ville</label>
-                                </td>
-                                <td>
-                                    <input type="text" name="newCity" placeholder="Ville" value ="<?php echo $_SESSION['ville']; ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="submit" name="submitNewAdress" value="mettre à jour mon adresse"><br><br>
-                                </td>
-                            </tr>
-                        </table>
+            ?>
 
-                    </form>
+        </div>
 
-                    <form method="POST" action="editionProfile.php">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+            Modifer mon mot de passe
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form method="POST" action="editionProfile.php">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ancien mot de passe</label>
+                                <input type="password" name="oldPassword" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Votre ancien mot de passe">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Nouveau mot de passe</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" name="newPassword" placeholder="Nouveau mot de passe">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Confirmer mot de passe</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" name="confirmNewPassword" placeholder="Confirmer nouveau mot de passe">
+                            </div>
+                            <input type="submit" class="btn btn-primary" name="submitNewPassword" value="mettre à jour mon mot de passe">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+     <!-- <form method="POST" action="editionProfile.php">
                         <table>
                             <tr>
                                 <td>
@@ -158,33 +179,14 @@ if (isset($_POST['retourIndex'])){
                                 </td>
                             </tr>
 
-                        </table>
-                    </form>
-
-                        <?php 
-
-                            if(isset($msg)) {
-                                echo $msg;
-                            }
-
-                        ?>
-
-                    </form>
-                </div>
-
-                <div class="col-md-12">
-                </div>
-
-                <div class="col-md-12">
-                </div>
-            
-            </div>
-        
-        </div>
+                        </table> 
+                    </form> -->
 
 
 
-<!--FOOTER-->
+
+
+    <!--FOOTER-->
     <?php include("footer.php") ?>
 
 

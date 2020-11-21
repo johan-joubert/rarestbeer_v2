@@ -1,3 +1,29 @@
+.blocLinkOrder, .blocLinkProfil {
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+
+a {
+    display: block;
+    text-decoration: none;
+    color: #000 !important;
+    padding: 5px 10px;
+}
+
+
+a:hover {
+    color: #fff;
+    text-decoration: none !important;
+}
+
+.fa-chevron-right {
+    float: right;
+    font-size: 0.9em;
+    padding: 5px;
+}
+
 .container {
     margin-top: 100px;
 }
