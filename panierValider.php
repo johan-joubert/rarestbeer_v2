@@ -144,9 +144,15 @@ editAdress ();
                     </div>
                     <div class="modal-body">
                         <?php
-                        $date1 = date('Y-m-d'); // Date du jour
-                        setlocale(LC_TIME, "fr_FR", "French");
-                        echo  'Livraison prévu le : ' . strftime("%A %d %B %G", strtotime($date1 . ' + 2 days'));
+                        if (date('w') == 6) {
+                            $date1 = date('Y-m-d'); // Date du jour
+                            setlocale(LC_TIME, "fr_FR", "French");
+                            echo  'Livraison prévu le : ' . strftime("%A %d %B %G", strtotime($date1 . ' + 3 days'));
+                        } else {
+                            $date1 = date('Y-m-d'); // Date du jour
+                            setlocale(LC_TIME, "fr_FR", "French");
+                            echo  'Livraison prévu le : ' . strftime("%A %d %B %G", strtotime($date1 . ' + 2 days'));
+                        }
                         ?>
                         <h4 class="modal-title" id="exampleModalLabel">Merci de votre confiance</h4>
                     </div>
