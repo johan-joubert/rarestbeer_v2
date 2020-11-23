@@ -48,9 +48,9 @@ if (!isset($_SESSION['panier'])) {
                     if (isset($_POST['IdDescriptionArticle'])) {
                         $id = $_POST['IdDescriptionArticle'];
                         $article = getArticleFromId($listeArticles, $id);
-                        ajoutAuPanierPageProduct($article, $id);
                         showProduct($article);                     
                     }
+
 
                     
                     ?>

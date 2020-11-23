@@ -58,6 +58,8 @@ if (isset($_POST['retourIndex'])) {
 
     <div class="container">
 
+        <h2 class="text-center">Mes informations personnelles</h2>
+
         <div class="row">
 
             <form method="post" action="editionProfile.php">

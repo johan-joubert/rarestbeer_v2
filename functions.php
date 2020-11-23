@@ -266,17 +266,6 @@ function showProduct($article)
     </div>";
 }
 
-// ajouter produit depuis page produit 
-
-function ajoutAuPanierPageProduct($article, $id)
-{
-    $isArticlesAdded = verifierPanier($id);
-    if ($isArticlesAdded == false) {
-        $article['qte'] = 1;
-        array_push($_SESSION['panier'], $article);
-    }
-}
-
 
 
 
@@ -596,38 +585,39 @@ function editPassword()
 
         if (isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmNewPassword'])) {
 
-            $mdp1 = $_POST['newPassword'];
-            $mdp2 = $_POST['confirmNewPassword'];
+                $mdp1 = $_POST['newPassword'];
+                $mdp2 = $_POST['confirmNewPassword'];
 
-            if ($mdp1 == $mdp2) {
+                if ($mdp1 == $mdp2) {
 
-                if($mdp1 !== $_POST['oldPassword']) {
+                    if($mdp1 !== $_POST['oldPassword']) {
 
-                    $oldPasswordDB = getPasswordUser();
+                            $oldPasswordDB = getPasswordUser();
 
-                    $isPasswordCorrect = password_verify($_POST['oldPassword'], $oldPasswordDB);
+                            $isPasswordCorrect = password_verify($_POST['oldPassword'], $oldPasswordDB);
 
-                    if ($isPasswordCorrect) {
+                            if ($isPasswordCorrect) {
 
-                        $bdd = getConnexion();
-                        $insertMdp = $bdd->prepare("UPDATE clients SET mot_de_passe = ? WHERE id = ?");
-                        $insertMdp->execute(array(password_hash($mdp1, PASSWORD_DEFAULT), $_SESSION['id']));
+                                $bdd = getConnexion();
+                                $insertMdp = $bdd->prepare("UPDATE clients SET mot_de_passe = ? WHERE id = ?");
+                                $insertMdp->execute(array(password_hash($mdp1, PASSWORD_DEFAULT), $_SESSION['id']));
 
-                    } 
+                            } 
+                            else {
+                                $msg = "L'ancien mot de passe saisi est incorrecte !";
+                                echo $msg;
+                            }
+                    }
                     else {
-                        $msg = "L'ancien mot de passe saisi est incorrecte !";
+                        $msg = "Votre nouveau mot de passe n'est pas terrible ! ma grand mère pourrait le pirater ! ";
                         echo $msg;
                     }
                 }
                 else {
-                    $msg = "Votre nouveau mot de passe n'est pas terrible ! ma grand mère pourrait le pirater ! ";
+                    $msg = "Votre nouveau mot de passe ne correspondent pas à sa confirmation !";
                     echo $msg;
                 }
-            }
-            else {
-                $msg = "Votre nouveau mot de passe ne correspondent pas à sa confirmation !";
-                echo $msg;
-            }
+
         }
          else {
             $msg = "Tous les champs ne sont pas remplis !";
@@ -738,3 +728,8 @@ function displayOrderArticle($orderArticle) {
 
     echo "</tbody>"; 
 }
+
+
+//========ADMIN======
+
+

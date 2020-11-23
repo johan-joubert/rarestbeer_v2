@@ -61,31 +61,43 @@ if (isset($_POST['retourIndex'])){
 
                 <div class="col-md-6">
 
-                <form method="POST" action="profil.php">
-                    <h2>On se connait ?</h2>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailConnect" placeholder="Email">
+                    <div class="blocConnect">
+
+                        <form method="POST" action="profil.php">
+                            <h2 class="font-weight-bold">On se connait ?</h2>
+                            <p class="text-left">Connectez-vous pour accéder à votre compte et profiter de tous ses avantages. <br><br></p>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailConnect" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="mdpConnect" placeholder="Mot de passe">
+                            </div>
+                            <input type="submit" class="btn btn-primary" name="formConnect" value="CONNEXION">
+                        </form>
+                        <?php
+                            if(isset($erreur)) {
+                                echo $erreur;
+                            }
+                        ?>
+
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1" name="mdpConnect" placeholder="Mot de passe">
-                    </div>
-                    <input type="submit" class="btn btn-primary" name="formConnect" value="CONNEXION">
-                </form>
-                <?php
-                        if(isset($erreur)) {
-                            echo $erreur;
-                        }
-                    ?>
-                    
+                      
                 </div>
 
                 <div class="col-md-6">
 
-                    <h2>Pas encore de compte ?</h2>
+                    <div class="blocConnect">
 
-                    <form action="inscription.php" method="post">
-                        <input type="submit" class="btn btn-primary" value="CRÉER MON COMPTE">
-                    </form>
+                        <h2 class="font-weight-bold">Pas encore de compte ?</h2>
+                        <p class="text-left">Nous savions que vous alliez faire le bon choix.
+                            <br> Rejoignez-nous, c'est par ici. <br><br></p>
+
+                        <form action="inscription.php" method="post">
+                            <input type="submit" class="btn btn-primary" value="CRÉER MON COMPTE">
+                        </form>
+
+                    </div>
+
                     
 
                 </div>

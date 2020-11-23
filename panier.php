@@ -10,6 +10,11 @@ if (isset($_POST['idQteArticle'])) {
     modifierQtePanier ();
 }
 
+if (isset($_POST['IdChooseArticle'])) {
+    $id = $_POST['IdChooseArticle'];
+    $chooseArticle = getOneArticleFromId($id);
+    ajoutAuPanier($chooseArticle, $id);
+}
 
 if(isset($_POST['deleteArticle'])) {
     supprimerArticle($_POST['deleteArticle']);
@@ -83,11 +88,16 @@ if (!isset($_SESSION['panier'])) {
                     <div class="col-md-4">
                         <div class="containMontant">
                         <?php
-                        if(!empty($_SESSION['panier'])) {
+                        if(!empty($_SESSION['panier']) && isset($_SESSION['id'])) {
                             echo "<div class=\"total\">Total <span id=\"montantPanier\">" . sprintf('%.2f', montant_panier()) . " €</span> </div>
                             <br>
                             <form method=\"post\" action=\"panierValider.php\">
                             <input type=\"submit\" value=\"VALIDER MON PANIER\" class=\"btnValiderPanier\">
+                            </form>";      
+
+                        } else {
+                            echo "<form method=\"post\" action=\"connexion.php\">
+                            <input type=\"submit\" value=\"Se connecter\" class=\"btnValiderPanier\">
                             </form>";      
 
                         }

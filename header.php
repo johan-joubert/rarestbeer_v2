@@ -23,17 +23,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link text-black" href="boutique.php"><span class="ilogo"><i class="fas fa-store-alt"></i></span>BOUTIQUE</a>
+        <a class="nav-link text-black text-center" href="boutique.php"><span class="ilogo"><i class="fas fa-store-alt text-center"></i></span>BOUTIQUE</a>
       </li>
       <li class="nav-item active">
         <?php 
           if(isset($_SESSION['id'])) {
         ?>
-            <a class="nav-link text-black" href="profil.php"><span class="ilogo"><i class="fas fa-user"></i></span></i>MON PROFIL</a>
+            <a class="nav-link text-black text-center" href="profil.php"><span class="ilogo"><i class="fas fa-user text-center"></i></span></i>MON PROFIL</a>
         <?php
           } else {
         ?>
-            <a class="nav-link text-black" href="connexion.php"><span class="ilogo"><i class="fas fa-user"></i></span></i>MON COMPTE</a>
+            <a class="nav-link text-black text-center" href="connexion.php"><span class="ilogo"><i class="fas fa-user text-center"></i></span></i>MON COMPTE</a>
         <?php
           }
         ?>
